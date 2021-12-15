@@ -1,11 +1,11 @@
 # Recipes Book :page_with_curl: - DevWeb@UFCG
 
-Recipes Book é um caderno de receitas virtual para armazenar e compartilhar seus pratos :spaghetti:  e drinks :tropical_drink:. 
+Recipes Book é um caderno de receitas virtual para armazenar e compartilhar seus pratos :spaghetti:&nbsp; e drinks&nbsp;:tropical_drink:. 
 
 ## Funcionalidades
 
-* :key:  Login de usuário
-* :bust_in_silhouette:  Perfil do usuário
-* :open_book:  CRUD de receitas
-* :shopping_cart:  Lista de compras
-* :link:  Compartilhar receitas 
+* :key:&nbsp; Login de usuário
+* :bust_in_silhouette:&nbsp; Perfil do usuário
+* :open_book:&nbsp; CRUD de receitas
+* :shopping_cart:&nbsp; Lista de compras
+* :link:&nbsp; Compartilhar receitas 

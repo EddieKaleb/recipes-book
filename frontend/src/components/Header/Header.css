@@ -1,0 +1,21 @@
+/*title header*/
+.title-header {
+  padding: 27px 0 15px;
+}
+
+.title-header .logos h2 {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+}
+
+.title-header .icon-search {
+  text-align: right;
+  color: black;
+}
+
+.title-header .icon-search i {
+  font-size: 22px;
+  position: relative;
+  top: 3px;
+}

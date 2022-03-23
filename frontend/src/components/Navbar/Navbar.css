@@ -1,0 +1,87 @@
+/*navbar home*/
+.navbar-home {
+  position: absolute;
+  height: 45px;
+  background: #d00807;
+  bottom: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.navbar-home .block {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0 0;
+}
+
+.navbar-home .block .link i {
+  font-size: 20px;
+  color: #fff;
+}
+
+.navbar-home .block .link .bars-icon {
+  transform: rotate(-90deg);
+}
+
+.navbar-inner {
+  height: 100%;
+}
+
+.navbar::before {
+  background: #eee;
+  height: 1px;
+}
+
+.navbar a.link {
+  display: block;
+  text-align: center;
+  padding: 2px 0;
+}
+
+/*navbar page*/
+.navbar-page {
+  background: blue;
+}
+
+.navbar-page::after {
+  height: 1px;
+  background: transparent;
+}
+
+.navbar-page .navbar-inner .left i {
+  color: #888;
+}
+
+.navbar-page .navbar-inner .title {
+  position: absolute;
+  left: 36px;
+  right: 36px;
+  text-align: center;
+  color: #333;
+  font-size: 16px;
+}
+
+.navbar-page .navbar-inner .right i {
+  color: #333;
+  padding: 0 16px;
+}
+
+.navbar-page .subnavbar {
+  background: #fff;
+  padding: 0 16px 10px;
+  height: auto;
+}
+
+.navbar-page .subnavbar::after {
+  height: 1px;
+  background: -webkit- #eee;
+  background: -webkit- #eee;
+  background: #eee;
+}
+
+.subnavbar::before {
+  height: 1px;
+  background: #eee;
+}

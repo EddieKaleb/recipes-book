@@ -42,7 +42,7 @@
 
 /*navbar page*/
 .navbar-page {
-  background: blue;
+  background: #fff;
 }
 
 .navbar-page::after {

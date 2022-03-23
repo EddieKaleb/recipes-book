@@ -7,22 +7,22 @@ export const Navbar = () => {
         <div className="block">
           <div className="row">
             <div className="col-3">
-              <a href="/pages/" className="link">
+              <a href="#" className="link">
                 <i className="ti-menu"></i>
               </a>
             </div>
             <div className="col-3">
-              <a href="/categories/" className="link">
+              <a href="#" className="link">
                 <i className="ti-home"></i>
               </a>
             </div>
             <div className="col-3">
-              <a href="/search/" className="link">
+              <a href="#" className="link">
                 <i className="ti-search"></i>
               </a>
             </div>
             <div className="col-3">
-              <a href="/reservation/" className="link">
+              <a href="#" className="link">
                 <i className="ti-plus"></i>
               </a>
             </div>

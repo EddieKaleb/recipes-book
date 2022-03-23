@@ -12,7 +12,7 @@ export const Header = () => {
           </div>
           <div className="col-2">
             <div className="icon-search">
-              <a href="/search/">
+              <a href="#">
                 <i className="ti-search"></i>
               </a>
             </div>

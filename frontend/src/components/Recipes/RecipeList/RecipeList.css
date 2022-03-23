@@ -1,0 +1,32 @@
+/*popular menu*/
+.popular-menu.segments {
+  padding-top: 26px;
+  padding-bottom: 30px;
+}
+
+.popular-menu .content img {
+  width: 12rem;
+  border-radius: 6px;
+}
+
+.popular-menu .content .text {
+  padding-top: 10px;
+}
+
+.popular-menu .content .text h4 {
+  margin-bottom: 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.popular-menu .content .text span {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.popular-menu .content .text .price {
+  color: #d00807;
+  font-weight: 600;
+  font-size: 14px;
+}

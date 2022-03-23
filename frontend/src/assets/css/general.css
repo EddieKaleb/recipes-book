@@ -168,6 +168,7 @@ a:focus {
   font-size: 16px;
   line-height: 24px;
   text-transform: none;
+  width: 100%;
 }
 
 .button i {
@@ -305,39 +306,6 @@ a:focus {
 
 .restaurant-home .swiper-container .swiper-slide .content .text p {
   color: #666;
-}
-
-/*popular menu*/
-.popular-menu.segments {
-  padding-top: 26px;
-  padding-bottom: 30px;
-}
-
-.popular-menu .content img {
-  width: 100%;
-  border-radius: 6px;
-}
-
-.popular-menu .content .text {
-  padding-top: 10px;
-}
-
-.popular-menu .content .text h4 {
-  margin-bottom: 0;
-  font-size: 16px;
-  color: #555;
-}
-
-.popular-menu .content .text span {
-  display: inline-block;
-  margin-bottom: 5px;
-  font-size: 12px;
-}
-
-.popular-menu .content .text .price {
-  color: #d00807;
-  font-weight: 600;
-  font-size: 14px;
 }
 
 /*search*/
@@ -709,45 +677,6 @@ a:focus {
   background: #fff;
   padding: 30px;
   text-align: center;
-}
-
-/*categories*/
-.categories .content {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.categories .content:last-child {
-  margin-bottom: 0;
-}
-
-.categories .content .mask {
-  background: linear-gradient(rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.66));
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 5px;
-}
-
-.categories .content img {
-  width: 100%;
-  height: 188px;
-  border-radius: 6px;
-  object-fit: cover;
-}
-
-.categories .content .title {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-}
-
-.categories .content .title h4 {
-  color: #fff;
-  font-size: 20px;
 }
 
 /*login*/
@@ -1273,6 +1202,7 @@ a:focus {
   background: #eee;
   border-radius: 3px;
   padding: 10px 20px;
+  width: 100%;
 }
 
 .list .item-input-wrap textarea {
@@ -1288,6 +1218,7 @@ a:focus {
   border-radius: 3px;
   padding: 7px 20px;
   color: #888;
+  width: 100%;
 }
 
 .list .input-dropdown-wrap::before {

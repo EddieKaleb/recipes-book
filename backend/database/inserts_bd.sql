@@ -1,0 +1,2 @@
+
+INSERT INTO receitas.categoria(descricao) values("Bolos e Tortas"), ("Carnes"), ("Aves"), ("Peixes Frutos do Mar"), ("Saladas e Molhos"), ("Sopas"), ("Massas"), ("Bebidas"), ("Doces e Sobremesas"), ("Lanches"), ("Alimentação Saudável");

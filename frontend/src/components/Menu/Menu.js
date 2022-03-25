@@ -1,18 +1,10 @@
+import { Title } from '../Title/Title'
 import './Menu.css'
 
 export const Menu = () => {
   return (
     <div class="page">
-      <div class="navbar navbar-page">
-        <div class="navbar-inner sliding">
-          <div class="left">
-            <a href="#" class="link back">
-              <i class="ti-arrow-left"></i>
-            </a>
-          </div>
-          <div class="title">Menu</div>
-        </div>
-      </div>
+      <Title title="Menu" backTo={'/'} />
       <div class="page-content">
         <div class="pages segments-page">
           <div class="container">
@@ -53,7 +45,7 @@ export const Menu = () => {
                   <a href="#" class="item-content item-link">
                     <div class="item-inner">
                       <div class="item-title">
-                        <i class="ti-apple"></i>
+                        <i class="ti-agenda"></i>
                         <span>Categories</span>
                         <i class="ti-angle-right"></i>
                       </div>

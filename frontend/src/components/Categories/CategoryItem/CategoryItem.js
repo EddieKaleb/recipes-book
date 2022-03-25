@@ -1,13 +1,13 @@
 import './CategoryItem.css'
 
-export const CategoryItem = () => {
+export const CategoryItem = ({ category }) => {
   return (
     <div className="content">
       <a href="#">
-        <img src="images/categories1.jpg" alt="" />
+        <img src={category.url_imagem} alt="" />
         <div className="mask"></div>
         <div className="title">
-          <h4>Doces e Salgados</h4>
+          <h4>{category.descricao}</h4>
         </div>
       </a>
     </div>

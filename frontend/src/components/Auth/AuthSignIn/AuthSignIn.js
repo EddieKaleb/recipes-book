@@ -1,18 +1,9 @@
+import { Title } from '../../Title/Title'
 import './AuthSignIn.css'
 
 export const AuthSignIn = () => {
   return (
     <div class="page">
-      <div class="navbar navbar-page">
-        <div class="navbar-inner sliding">
-          <div class="left">
-            <a href="#" class="link back">
-              <i class="ti-arrow-left"></i>
-            </a>
-          </div>
-          <div class="title">Login</div>
-        </div>
-      </div>
       <div class="page-content">
         <div class="login segments-page">
           <div class="container">
@@ -34,6 +25,10 @@ export const AuthSignIn = () => {
                 <i class="ti-shift-right"></i>Sign In
               </button>
             </form>
+
+            <div class="register-link">
+              <a href="#">Or Sign Up Here</a>
+            </div>
           </div>
         </div>
       </div>

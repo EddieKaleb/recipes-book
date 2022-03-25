@@ -1,12 +1,13 @@
 /*title header*/
 .title-header {
   padding: 27px 0 15px;
+  font-size: 20px;
+  color: #000;
 }
 
-.title-header .logos h2 {
-  font-size: 28px;
-  font-weight: 700;
-  font-family: 'Playfair Display', serif;
+.title-header-text {
+  display: flex;
+  justify-content: center;
 }
 
 .title-header .icon-search {

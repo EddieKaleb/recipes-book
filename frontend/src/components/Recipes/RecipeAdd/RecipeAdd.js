@@ -1,18 +1,11 @@
+import { Title } from '../../Title/Title'
 import './RecipeAdd.css'
 
 export const RecipeAdd = () => {
   return (
     <div className="page">
-      <div className="navbar navbar-page">
-        <div className="navbar-inner sliding">
-          <div className="left">
-            <a href="#" className="link back">
-              <i className="ti-arrow-left"></i>
-            </a>
-          </div>
-          <div className="title">Add New Recipe</div>
-        </div>
-      </div>
+      <Title title={'Add New Recipe'} />
+
       <div className="page-content">
         <div className="reservation segments-page">
           <div className="container">
@@ -43,11 +36,16 @@ export const RecipeAdd = () => {
                 <input type="text" placeholder="Ingredients*" required />
               </div>
               <div className="item-input-wrap">
-                <input type="text" placeholder="Directions (Steps)*" required />
+                <textarea
+                  rows="5"
+                  type="text"
+                  placeholder="Directions (steps)*"
+                  required
+                />
               </div>
 
               <div className="item-input-wrap">
-                <input type="text" placeholder="Cook's Notes (Observations)" />
+                <textarea rows="5" placeholder="Cook's Notes (observations)" />
               </div>
               <div className="item-input-wrap">
                 <input type="text" placeholder="Image URL" />

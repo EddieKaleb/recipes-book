@@ -1,15 +1,17 @@
 import './RecipeItem.css'
 
-export const RecipeItem = () => {
+export const RecipeItem = ({ recipe }) => {
   return (
     <div className="content">
-      <img src="images/menu1.jpg" alt="" />
+      <img src={recipe.url_imagem} alt="" />
       <div className="text">
         <a href="#">
-          <h4>Peanut Egg</h4>
+          <h4>{recipe.titulo}</h4>
         </a>
-        <span>Asian Food</span>
-        <p className="price">$8.00</p>
+        <span>{recipe.categoria.descricao}</span>
+        <p className="price">
+          {recipe.tempo_preparo} min {recipe.rendimento} porções
+        </p>
       </div>
     </div>
   )

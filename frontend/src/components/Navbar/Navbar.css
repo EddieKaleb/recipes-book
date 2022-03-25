@@ -1,6 +1,6 @@
 /*navbar home*/
 .navbar-home {
-  position: absolute;
+  position: sticky;
   height: 45px;
   background: #d00807;
   bottom: 0;

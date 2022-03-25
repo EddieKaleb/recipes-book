@@ -10,23 +10,24 @@ import { AuthSignUp } from './components/Auth/AuthSignUp/AuthSignUp'
 
 function App() {
   return (
-    <AuthSignUp />
+    // <AuthSignUp />
     // <AuthSignIn />
     // <Menu />
     // <RecipeAdd />
     // <CategoryList />
-    // <div id="app">
-    //   <div className="view view-main view-init ios-edges" data-url="/">
-    //     <div className="page page-home">
-    //       <div className="page-content">
-    //         <Header />
+    <div id="app">
+      <div className="view view-main view-init ios-edges" data-url="/">
+        <div className="page page-home">
+          <div className="page-content">
+            <Header />
 
-    //         <Home />
-    //       </div>
-    //     </div>
-    //     <Navbar />
-    //   </div>
-    // </div>
+            <Home />
+          </div>
+        </div>
+
+        <Navbar />
+      </div>
+    </div>
   )
 }
 

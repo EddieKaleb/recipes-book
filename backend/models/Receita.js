@@ -20,7 +20,7 @@ module.exports = (sequelize, DataType) => {
             allowNull: false
         },
         ingredientes: {
-            type: DataType.STRING(100),
+            type: DataType.TEXT,
             allowNull: false
         },
         modo_preparo: {
@@ -57,7 +57,7 @@ module.exports = (sequelize, DataType) => {
     },
         {
             tableName: "receita",
-            TimeStamps: false
+            timestamps: false
         }
     )
     return Receita;

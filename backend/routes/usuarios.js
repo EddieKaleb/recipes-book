@@ -6,7 +6,7 @@ const userController = require("../controllers/usuarios");
 router.get("/", userController.index);
 
 //LISTAR USUÁRIOS POR ID
-router.get("/:id", userController.show);
+router.get("/buscar/:id", userController.show);
 
 //CADASTRAR USUÁRIOS
 router.post("/cadastrar", userController.add);

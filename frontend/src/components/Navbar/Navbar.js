@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import './Navbar.css'
 
 export const Navbar = () => {
@@ -7,24 +9,24 @@ export const Navbar = () => {
         <div className="block">
           <div className="row">
             <div className="col-3">
-              <a href="#" className="link">
+              <Link to="/menu" className="link">
                 <i className="ti-menu"></i>
-              </a>
+              </Link>
             </div>
             <div className="col-3">
-              <a href="#" className="link">
+              <Link to="/" className="link">
                 <i className="ti-home"></i>
-              </a>
+              </Link>
             </div>
             <div className="col-3">
-              <a href="#" className="link">
+              <Link to="/recipes/search" className="link">
                 <i className="ti-search"></i>
-              </a>
+              </Link>
             </div>
             <div className="col-3">
-              <a href="#" className="link">
+              <Link to="/recipes/new-recipe" className="link">
                 <i className="ti-plus"></i>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

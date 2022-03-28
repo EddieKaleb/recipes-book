@@ -1,3 +1,5 @@
+import { Link, useLocation } from 'react-router-dom'
+
 import { Title } from '../Title/Title'
 import './Menu.css'
 
@@ -11,7 +13,7 @@ export const Menu = () => {
             <div class="content">
               <ul>
                 <li>
-                  <a href="#" class="item-content item-link">
+                  <a class="item-content item-link">
                     <div class="item-inner">
                       <div class="item-title">
                         <span>Hello, Eddie!</span>
@@ -20,7 +22,7 @@ export const Menu = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="item-content item-link">
+                  <Link to={'/'} class="item-content item-link">
                     <div class="item-inner">
                       <div class="item-title">
                         <i class="ti-home"></i>
@@ -28,10 +30,13 @@ export const Menu = () => {
                         <i class="ti-angle-right"></i>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" class="item-content item-link">
+                  <Link
+                    to={'/recipes/new-recipe'}
+                    class="item-content item-link"
+                  >
                     <div class="item-inner">
                       <div class="item-title">
                         <i class="ti-plus"></i>
@@ -39,10 +44,10 @@ export const Menu = () => {
                         <i class="ti-angle-right"></i>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" class="item-content item-link">
+                  <Link to={'/categories'} class="item-content item-link">
                     <div class="item-inner">
                       <div class="item-title">
                         <i class="ti-agenda"></i>
@@ -50,11 +55,11 @@ export const Menu = () => {
                         <i class="ti-angle-right"></i>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
-                  <a href="#" class="item-content item-link">
+                  <Link to={'/signin'} class="item-content item-link">
                     <div class="item-inner">
                       <div class="item-title">
                         <i class="ti-shift-left"></i>
@@ -62,7 +67,7 @@ export const Menu = () => {
                         <i class="ti-angle-right"></i>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

@@ -9,9 +9,9 @@ export const RecipeItem = ({ recipe }) => {
       ></div>
       <div className="text">
         <a href="#">
-          <h4>{recipe.titulo}</h4>
+          <h4 className="recipe-title">{recipe.titulo}</h4>
         </a>
-        <span>{recipe.categoria.descricao}</span>
+
         <p className="price">
           <i className="ti-timer">&nbsp;</i>
           {recipe.tempo_preparo} min&nbsp;&nbsp;&nbsp;

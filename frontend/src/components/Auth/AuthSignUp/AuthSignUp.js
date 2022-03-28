@@ -4,7 +4,7 @@ import './AuthSignUp.css'
 export const AuthSignUp = () => {
   return (
     <div class="page">
-      <Title title={'Sign Up'} />
+      <Title backTo={'/signin'} title={'Sign Up'} />
       <div class="page-content">
         <div class="register segments-page">
           <div class="container">

@@ -27,7 +27,7 @@ export const RecipeDetail = () => {
 
   return (
     <div className="page">
-      <Title title={"Recipe's Details"} />
+      <Title backTo={'/'} title={"Recipe's Details"} />
       <div className="page-content">
         <div className="restaurant">
           <div className="container">

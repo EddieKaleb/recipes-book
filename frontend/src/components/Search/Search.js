@@ -19,7 +19,7 @@ export const Search = () => {
       </div>
 
       <div class="page-content">
-        <RecipeList searchMode={true} />
+        <RecipeList />
       </div>
     </div>
   )

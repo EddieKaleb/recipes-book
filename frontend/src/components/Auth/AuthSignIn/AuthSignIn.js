@@ -1,4 +1,5 @@
-import { Title } from '../../Title/Title'
+import { Link } from 'react-router-dom'
+
 import './AuthSignIn.css'
 
 export const AuthSignIn = () => {
@@ -27,7 +28,7 @@ export const AuthSignIn = () => {
             </form>
 
             <div class="register-link">
-              <a href="#">Or Sign Up Here</a>
+              <Link to="/signup">Or Sign Up Here</Link>
             </div>
           </div>
         </div>

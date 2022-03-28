@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import './Header.css'
 
 export const Header = () => {
@@ -12,9 +14,9 @@ export const Header = () => {
           </div>
           <div className="col-2">
             <div className="icon-search">
-              <a href="#">
+              <Link to="/recipes/search">
                 <i className="ti-search"></i>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

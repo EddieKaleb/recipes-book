@@ -1,168 +1,95 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+import { Link, useLocation } from 'react-router-dom'
 
 import { RecipeItem } from '../RecipeItem/RecipeItem'
 
 import './RecipeList.css'
 
-export const RecipeList = ({ hideTitle, search }) => {
-  const [recipes, setRecipes] = useState([
-    {
-      id: 1,
-      titulo: 'Bolo de Milho',
-      tempo_preparo: 40,
-      rendimento: 15,
-      ingredientes:
-        '1 lata de milho verde, 1/2 lata de óleo, 1 lata de leite, 1 lata de açúcar, 3 ovos, 1 lata de fubá, fermento em pó (usar a tampinha como medida)',
-      modo_preparo:
-        'Adicione os ingredientes listados ao liquidificador. Adicione a massa a uma forma untada com fubá e manteiga. Asse de 40 a 45 minutos.',
-      observacoes: 'respeitar o tempo de cozimento',
-      url_imagem:
-        'https://img.cybercook.com.br/receitas/641/bolo-de-milho-4.jpeg',
-      usuario: {},
-      categoria: {
-        descricao: 'Bolos e Massas',
-      },
-      data: '2022-03-24',
-      url_video: 'https://www.youtube.com/watch?v=V3rgpmqLJug',
-    },
-    {
-      id: 1,
-      titulo: 'Cuscuz de Lilian',
-      tempo_preparo: 3,
-      rendimento: 5,
-      ingredientes:
-        '1 lata de milho verde, 1/2 lata de óleo, 1 lata de leite, 1 lata de açúcar, 3 ovos, 1 lata de fubá, fermento em pó (usar a tampinha como medida)',
-      modo_preparo:
-        'Adicione os ingredientes listados ao liquidificador. Adicione a massa a uma forma untada com fubá e manteiga. Asse de 40 a 45 minutos.',
-      observacoes: 'respeitar o tempo de cozimento',
-      url_imagem:
-        'https://pbs.twimg.com/media/ExKoiIdWQAM5No1?format=jpg&name=large',
-      usuario: {},
-      categoria: {
-        descricao: 'Bolos e Massas',
-      },
-      data: '2022-03-24',
-      url_video: 'https://www.youtube.com/watch?v=V3rgpmqLJug',
-    },
-    {
-      id: 1,
-      titulo: 'Bolo de Milho',
-      tempo_preparo: 40,
-      rendimento: 15,
-      ingredientes:
-        '1 lata de milho verde, 1/2 lata de óleo, 1 lata de leite, 1 lata de açúcar, 3 ovos, 1 lata de fubá, fermento em pó (usar a tampinha como medida)',
-      modo_preparo:
-        'Adicione os ingredientes listados ao liquidificador. Adicione a massa a uma forma untada com fubá e manteiga. Asse de 40 a 45 minutos.',
-      observacoes: 'respeitar o tempo de cozimento',
-      url_imagem:
-        'https://img.cybercook.com.br/receitas/641/bolo-de-milho-4.jpeg',
-      usuario: {},
-      categoria: {
-        descricao: 'Bolos e Massas',
-      },
-      data: '2022-03-24',
-      url_video: 'https://www.youtube.com/watch?v=V3rgpmqLJug',
-    },
-    {
-      id: 1,
-      titulo: 'Bolo de Milho',
-      tempo_preparo: 40,
-      rendimento: 15,
-      ingredientes:
-        '1 lata de milho verde, 1/2 lata de óleo, 1 lata de leite, 1 lata de açúcar, 3 ovos, 1 lata de fubá, fermento em pó (usar a tampinha como medida)',
-      modo_preparo:
-        'Adicione os ingredientes listados ao liquidificador. Adicione a massa a uma forma untada com fubá e manteiga. Asse de 40 a 45 minutos.',
-      observacoes: 'respeitar o tempo de cozimento',
-      url_imagem:
-        'https://img.cybercook.com.br/receitas/641/bolo-de-milho-4.jpeg',
-      usuario: {},
-      categoria: {
-        descricao: 'Bolos e Massas',
-      },
-      data: '2022-03-24',
-      url_video: 'https://www.youtube.com/watch?v=V3rgpmqLJug',
-    },
-    {
-      id: 1,
-      titulo: 'Bolo de Milho',
-      tempo_preparo: 40,
-      rendimento: 15,
-      ingredientes:
-        '1 lata de milho verde, 1/2 lata de óleo, 1 lata de leite, 1 lata de açúcar, 3 ovos, 1 lata de fubá, fermento em pó (usar a tampinha como medida)',
-      modo_preparo:
-        'Adicione os ingredientes listados ao liquidificador. Adicione a massa a uma forma untada com fubá e manteiga. Asse de 40 a 45 minutos.',
-      observacoes: 'respeitar o tempo de cozimento',
-      url_imagem:
-        'https://img.cybercook.com.br/receitas/641/bolo-de-milho-4.jpeg',
-      usuario: {},
-      categoria: {
-        descricao: 'Bolos e Massas',
-      },
-      data: '2022-03-24',
-      url_video: 'https://www.youtube.com/watch?v=V3rgpmqLJug',
-    },
-    {
-      id: 1,
-      titulo: 'Bolo de Milho',
-      tempo_preparo: 40,
-      rendimento: 15,
-      ingredientes:
-        '1 lata de milho verde, 1/2 lata de óleo, 1 lata de leite, 1 lata de açúcar, 3 ovos, 1 lata de fubá, fermento em pó (usar a tampinha como medida)',
-      modo_preparo:
-        'Adicione os ingredientes listados ao liquidificador. Adicione a massa a uma forma untada com fubá e manteiga. Asse de 40 a 45 minutos.',
-      observacoes: 'respeitar o tempo de cozimento',
-      url_imagem:
-        'https://img.cybercook.com.br/receitas/641/bolo-de-milho-4.jpeg',
-      usuario: {},
-      categoria: {
-        descricao: 'Bolos e Massas',
-      },
-      data: '2022-03-24',
-      url_video: 'https://www.youtube.com/watch?v=V3rgpmqLJug',
-    },
-  ])
+export const RecipeList = ({ search }) => {
+  const location = useLocation()
+
+  const [recipes, setRecipes] = useState([])
 
   const [searchedRecipes, setSearchedRecipes] = useState([])
+
+  useEffect(() => {
+    const getRecipes = async () => {
+      const recipesFromServer = await fetchRecipes()
+      setRecipes(recipesFromServer)
+    }
+
+    const getSearchRecipes = async () => {
+      const recipesFromServer = await fetchSearchedRecipes()
+      setSearchedRecipes(recipesFromServer)
+    }
+
+    if (location.pathname === '/') {
+      getRecipes()
+    } else {
+      getSearchRecipes()
+    }
+  }, [search])
+
+  const fetchSearchedRecipes = async () => {
+    if (search === undefined) return
+
+    const res = await fetch(
+      `http://localhost:3000/receitas/filtrar?titulo=${search}`,
+    )
+
+    const data = await res.json()
+
+    return data
+  }
+
+  const fetchRecipes = async () => {
+    const res = await fetch('http://localhost:3000/receitas')
+
+    const data = await res.json()
+
+    return data
+  }
 
   return (
     <div className="popular-menu segments">
       <div className="container">
-        {hideTitle ? (
-          <span></span>
-        ) : (
+        {location.pathname === '/' ? (
           <div className="section-title">
             <h3>
               My Recipes
-              <a href="#" className="see-all-link">
+              <Link to="/categories" className="see-all-link">
                 See Categories
-              </a>
+              </Link>
             </h3>
           </div>
+        ) : (
+          <span></span>
         )}
         <div className="row justify-content-md-center justify-content-lg-start">
-          {hideTitle
-            ? searchedRecipes.map((recipe) => (
-                <div
-                  key={recipe.id}
-                  className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
-                >
-                  <RecipeItem recipe={recipe} />
-                </div>
-              ))
-            : recipes.map((recipe) => (
-                <div
-                  key={recipe.id}
-                  className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
-                >
-                  <RecipeItem recipe={recipe} />
-                </div>
-              ))}
+          {location.pathname === '/' ? (
+            recipes.map((recipe) => (
+              <div
+                key={recipe.id}
+                className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
+              >
+                <RecipeItem recipe={recipe} />
+              </div>
+            ))
+          ) : searchedRecipes.length ? (
+            searchedRecipes.map((recipe) => (
+              <div
+                key={recipe.id}
+                className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
+              >
+                <RecipeItem recipe={recipe} />
+              </div>
+            ))
+          ) : (
+            <span>Nenhum resultado encontrado!</span>
+          )}
         </div>
       </div>
     </div>
   )
-}
-
-RecipeList.defaultProps = {
-  hideTitle: false,
 }

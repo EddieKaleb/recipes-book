@@ -4,13 +4,12 @@ Recipes Book é um caderno de receitas virtual para armazenar e compartilhar seu
 
 ## :hammer_and_wrench: Funcionalidades
 
-* :key:&nbsp; Login de usuário
-* :bust_in_silhouette:&nbsp; Perfil do usuário
-* :custard:&nbsp; CRUD de receitas
-* :shopping_cart:&nbsp; Lista de compras
-* :link:&nbsp; Compartilhar receitas
+- :key:&nbsp; Login de usuário
+- :bust_in_silhouette:&nbsp; Perfil do usuário
+- :custard:&nbsp; CRUD de receitas
+- :link:&nbsp; Compartilhar receitas
 
 ## :microscope: Características
 
-* :school_satchel: PWA - Progressive Web App
-* :iphone: Mobile first design
+- :school_satchel: PWA - Progressive Web App
+- :iphone: Mobile first design

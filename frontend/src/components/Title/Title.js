@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 import './Title.css'
 
 export const Title = ({ title, backTo }) => {
@@ -9,9 +11,9 @@ export const Title = ({ title, backTo }) => {
         <div className="row">
           <div className="col-1">
             <div className="icon-search">
-              <a href={backTo}>
+              <Link to={backTo}>
                 <i className="ti-arrow-left"></i>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col">

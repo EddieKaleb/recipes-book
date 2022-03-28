@@ -1,68 +1,73 @@
+import { Link, useLocation } from 'react-router-dom'
+
 import { Title } from '../Title/Title'
 import './Menu.css'
 
 export const Menu = () => {
   return (
-    <div class="page">
+    <div className="page">
       <Title title="Menu" backTo={'/'} />
-      <div class="page-content">
-        <div class="pages segments-page">
-          <div class="container">
-            <div class="content">
+      <div className="page-content">
+        <div className="pages segments-page">
+          <div className="container">
+            <div className="content">
               <ul>
                 <li>
-                  <a href="#" class="item-content item-link">
-                    <div class="item-inner">
-                      <div class="item-title">
+                  <a className="item-content item-link">
+                    <div className="item-inner">
+                      <div className="item-title">
                         <span>Hello, Eddie!</span>
                       </div>
                     </div>
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="item-content item-link">
-                    <div class="item-inner">
-                      <div class="item-title">
-                        <i class="ti-home"></i>
+                  <Link to={'/'} className="item-content item-link">
+                    <div className="item-inner">
+                      <div className="item-title">
+                        <i className="ti-home"></i>
                         <span>Home</span>
-                        <i class="ti-angle-right"></i>
+                        <i className="ti-angle-right"></i>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" class="item-content item-link">
-                    <div class="item-inner">
-                      <div class="item-title">
-                        <i class="ti-plus"></i>
+                  <Link
+                    to={'/recipes/new-recipe'}
+                    className="item-content item-link"
+                  >
+                    <div className="item-inner">
+                      <div className="item-title">
+                        <i className="ti-plus"></i>
                         <span>New Recipe</span>
-                        <i class="ti-angle-right"></i>
+                        <i className="ti-angle-right"></i>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" class="item-content item-link">
-                    <div class="item-inner">
-                      <div class="item-title">
-                        <i class="ti-agenda"></i>
+                  <Link to={'/categories'} className="item-content item-link">
+                    <div className="item-inner">
+                      <div className="item-title">
+                        <i className="ti-agenda"></i>
                         <span>Categories</span>
-                        <i class="ti-angle-right"></i>
+                        <i className="ti-angle-right"></i>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
-                  <a href="#" class="item-content item-link">
-                    <div class="item-inner">
-                      <div class="item-title">
-                        <i class="ti-shift-left"></i>
+                  <Link to={'/signin'} className="item-content item-link">
+                    <div className="item-inner">
+                      <div className="item-title">
+                        <i className="ti-shift-left"></i>
                         <span>Logout</span>
-                        <i class="ti-angle-right"></i>
+                        <i className="ti-angle-right"></i>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

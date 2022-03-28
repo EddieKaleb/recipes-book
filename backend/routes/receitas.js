@@ -4,21 +4,21 @@ const receitasController = require("../controllers/receitas");
 
 //LISTAR RECEITAS GERAL E POR ID
 router.get("/", receitasController.index);
-router.get("/:id", receitasController.show);
+router.get("/buscar/:id", receitasController.show);
 
 // //LISTAR RECEITAS POR CATEGORIA
 router.get("/categorias/:id", receitasController.categorias);
 
 // //LISTAR RECEITAS POR TÍTULO
-router.get("/:titulo", receitasController.titulo);
+router.get("/filtrar", receitasController.titulo);
 
 // //CADASTRAR RECEITAS
-// router.post("/cadastro", receitasController.add);
+router.post("/cadastrar", receitasController.add);
 
 // //EDITAR RECEITAS
-// router.put("/:id/editar", receitasController.edit);
+router.put("/editar/:id", receitasController.edit);
 
 // //DELETAR RECEITAS
-// router.delete("/:id/excluir", receitasController.delete);
+router.delete("/excluir/:id", receitasController.delete);
 
 module.exports = router;

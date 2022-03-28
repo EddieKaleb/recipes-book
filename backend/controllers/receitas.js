@@ -18,7 +18,7 @@ const controller = {
         if (receitaId) {
             res.json(receitaId)
         } else {
-            res.status(500).send("Usuário não encontrado!")
+            res.status(404).send("Receita não encontrada!")
         }
     },
     //LISTAR RECEITAS POR ID DA CATEGORIA
@@ -32,25 +32,75 @@ const controller = {
         if (receitasPorCategoria) {
             res.json(receitasPorCategoria)
         } else {
-            res.status(500).send("Usuário não encontrado!") //ESTÁ TRAZENDO UM ARRAY VAZIO AO INVÉS DA MENSAGEM
-            console.log(receitasPorCategoria)
+            res.status(404).send("Categoria de receita não encontrada!") //ESTÁ TRAZENDO UM ARRAY VAZIO AO INVÉS DA MENSAGEM
         }
     },
     //LISTAR RECEITAS POR TÍTULO (VERIFICAR IMPLEMENTAÇÃO)
     titulo: async (req, res, next) => {
         const { titulo } = req.query;
         const receitasPorTitulo = await Receita.findAll({
-            where: { [op.like]: `%${titulo}%` }
+            where: { titulo: { [op.like]: `%${titulo}%` } }
         })
 
         if (receitasPorTitulo) {
             res.json(receitasPorTitulo)
-        } else {
-            res.status(500).send("Usuário não encontrado!") //ESTÁ TRAZENDO UM ARRAY VAZIO AO INVÉS DA MENSAGEM
         }
     },
-
     //CADASTRAR RECEITAS
+    add: async (req, res, next) => {
+        const { titulo, tempo_preparo, rendimento, ingredientes, modo_preparo, observacoes, url_imagem, id_usuario, id_categoria, data, url_video } = req.body;
+        const novaReceita = await Receita.create({
+            titulo,
+            tempo_preparo,
+            rendimento,
+            ingredientes,
+            modo_preparo,
+            observacoes,
+            url_imagem,
+            id_usuario,
+            id_categoria,
+            data,
+            url_video
+        })
+        if (novaReceita) {
+            res.json(novaReceita)
+        } else {
+            res.status(404).send("Receita não cadastrada!")
+        }
+    },
+    edit: async (req, res, next) => {
+        const { id, titulo, tempo_preparo, rendimento, ingredientes, modo_preparo, observacoes, url_imagem, id_usuario, id_categoria, data, url_video } = req.body;
+        const receitaEditada = await Receita.update({
+            titulo,
+            tempo_preparo,
+            rendimento,
+            ingredientes,
+            modo_preparo,
+            observacoes,
+            url_imagem,
+            id_usuario,
+            id_categoria,
+            data,
+            url_video
+        }, { where: { id } })
+        if (receitaEditada) {
+            res.json(await Receita.findByPk(id))
+        } else {
+            res.status(404).send("Receita não atualizada!")
+        }
+    },
+    //EXCLUIR RECEITAS
+    delete: async (req, res, next) => {
+        console.log('excluir')
+        const { id } = req.params;
+        const receitaExcluida = await Receita.findByPk(id);
+        if (receitaExcluida) {
+            await Receita.destroy({ where: { id } })
+            res.send("Receita excluída com sucesso!")
+        } else {
+            res.status(404).send("Receita não encontrada!")
+        }
+    }
 
 }
 

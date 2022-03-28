@@ -13,13 +13,13 @@ import { RecipeDetail } from './components/Recipes/RecipeDetail/RecipeDetail'
 function App() {
   return (
     // <AuthSignUp />
-    // <AuthSignIn />
-    // <Menu />
-    // <RecipeAdd />
-    // <RecipeDetail />
-    // <CategoryList />
-    // <Search />
-    <div id="app">
+    //<AuthSignIn />
+    //<Menu />
+    //<RecipeAdd />
+    //<RecipeDetail />
+    //<CategoryList />
+    <Search />
+    /*<div id="app">
       <div className="view view-main view-init ios-edges" data-url="/">
         <div className="page page-home">
           <div className="page-content">
@@ -29,7 +29,7 @@ function App() {
         </div>
         <Navbar />
       </div>
-    </div>
+    </div>*/
   )
 }
 

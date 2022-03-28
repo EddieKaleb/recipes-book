@@ -6,7 +6,7 @@ import { RecipeItem } from '../RecipeItem/RecipeItem'
 
 import './RecipeList.css'
 
-export const RecipeList = () => {
+export const RecipeList = ({ search }) => {
   const location = useLocation()
 
   const [recipes, setRecipes] = useState([])
@@ -19,11 +19,33 @@ export const RecipeList = () => {
       setRecipes(recipesFromServer)
     }
 
-    getRecipes()
-  }, [])
+    const getSearchRecipes = async () => {
+      const recipesFromServer = await fetchSearchedRecipes()
+      setSearchedRecipes(recipesFromServer)
+    }
+
+    if (location.pathname === '/') {
+      getRecipes()
+    } else {
+      getSearchRecipes()
+    }
+  }, [search])
+
+  const fetchSearchedRecipes = async () => {
+    if (search === undefined) return
+
+    const res = await fetch(
+      `http://localhost:3000/receitas/filtrar?titulo=${search}`,
+    )
+
+    const data = await res.json()
+
+    return data
+  }
 
   const fetchRecipes = async () => {
     const res = await fetch('http://localhost:3000/receitas')
+
     const data = await res.json()
 
     return data
@@ -45,23 +67,27 @@ export const RecipeList = () => {
           <span></span>
         )}
         <div className="row justify-content-md-center justify-content-lg-start">
-          {location.pathname === '/'
-            ? recipes.map((recipe) => (
-                <div
-                  key={recipe.id}
-                  className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
-                >
-                  <RecipeItem recipe={recipe} />
-                </div>
-              ))
-            : searchedRecipes.map((recipe) => (
-                <div
-                  key={recipe.id}
-                  className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
-                >
-                  <RecipeItem recipe={recipe} />
-                </div>
-              ))}
+          {location.pathname === '/' ? (
+            recipes.map((recipe) => (
+              <div
+                key={recipe.id}
+                className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
+              >
+                <RecipeItem recipe={recipe} />
+              </div>
+            ))
+          ) : searchedRecipes.length ? (
+            searchedRecipes.map((recipe) => (
+              <div
+                key={recipe.id}
+                className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
+              >
+                <RecipeItem recipe={recipe} />
+              </div>
+            ))
+          ) : (
+            <span>Nenhum resultado encontrado!</span>
+          )}
         </div>
       </div>
     </div>

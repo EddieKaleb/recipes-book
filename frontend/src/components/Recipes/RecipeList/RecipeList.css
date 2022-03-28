@@ -28,7 +28,7 @@
   }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 470px) {
   .popular-menu .content .fig {
     width: 13rem;
     min-width: 13rem;
@@ -39,13 +39,13 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 410px) {
   .popular-menu .content {
     margin-bottom: 1rem;
   }
   .popular-menu .content .fig {
-    width: 11rem;
-    min-width: 11rem;
+    width: 10.5rem;
+    min-width: 10.5rem;
     margin-top: 0.5rem;
   }
 

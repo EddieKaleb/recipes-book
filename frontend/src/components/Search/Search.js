@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CategoryList } from '../Categories/CategoryList/CategoryList'
 import { RecipeList } from '../Recipes/RecipeList/RecipeList'
 
@@ -7,19 +7,29 @@ import { Title } from '../Title/Title'
 import './Search.css'
 
 export const Search = () => {
+  const [searchInput, setSearchInput] = useState('')
+
+  const handleInputChange = (event) => {
+    setSearchInput(event.target.value)
+  }
   return (
-    <div class="page">
+    <div className="page">
       <Title title="Search" backTo={'/'} />
       <div className="container">
         <form className="list">
-          <div class="item-input-wrap">
-            <input type="text" placeholder="Type a search..." required />
+          <div className="item-input-wrap">
+            <input
+              type="text"
+              placeholder="Type a search..."
+              required
+              onChange={handleInputChange}
+            />
           </div>
         </form>
       </div>
 
-      <div class="page-content">
-        <RecipeList />
+      <div className="page-content">
+        <RecipeList search={searchInput} />
       </div>
     </div>
   )

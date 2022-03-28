@@ -1,4 +1,5 @@
 const { Usuario } = require('../models');
+const bcrypt = require('bcrypt');
 
 
 const controller = {
@@ -23,6 +24,7 @@ const controller = {
     //CADASTRAR USUÁRIOS
     add: async (req, res, next) => {
         const { nome, email, senha } = req.body;
+        const senhaCrypto = await bcrypt.hash(senha, 12);
         const validarEmail = await Usuario.findOne({ where: { email } })
         if (validarEmail) {
             res.status(200).send("E-mail já cadastrado!")
@@ -30,7 +32,7 @@ const controller = {
             const novoUsuario = await Usuario.create({
                 nome,
                 email,
-                senha
+                senha: senhaCrypto
             })
             if (novoUsuario) {
                 res.json(novoUsuario)

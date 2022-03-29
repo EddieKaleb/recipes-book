@@ -9,12 +9,10 @@ export const Title = ({ title, backTo }) => {
     <div className="title-header">
       <div className="container">
         <div className="row">
-          <div className="col-1">
-            <div className="icon-search">
-              <Link to={backTo}>
-                <i className="ti-arrow-left"></i>
-              </Link>
-            </div>
+          <div className="icon-search">
+            <Link to={backTo}>
+              <i className="ti-arrow-left"></i>
+            </Link>
           </div>
           <div className="col">
             <div className="title-header-text">

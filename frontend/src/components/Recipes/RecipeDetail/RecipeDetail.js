@@ -1,29 +1,45 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Title } from '../../Title/Title'
+import { useParams, useNavigate } from 'react-router-dom'
+
 import './RecipeDetail.css'
 
 export const RecipeDetail = () => {
-  const [recipe, setRecipe] = useState({
-    id: 1,
-    titulo: 'Cuscuz de Lilian',
-    tempo_preparo: 5,
-    rendimento: 10,
-    categoria: {
-      id: 1,
-      descricao: 'Bolos e Massas',
-    },
-    usuario: {
-      nome: 'Eddie',
-    },
-    ingredientes:
-      'Cuscuz (400g); Cimento (100g); Areia (50g); Água (1ml); Brita (50g)',
-    modo_preparo: 'Junte tudo e coloque no fogão',
-    observacoes: 'Não deixar molhado, espere ficar seco',
-    url_imagem:
-      'https://pbs.twimg.com/media/ExKoiIdWQAM5No1?format=jpg&name=large',
-    data: '2022-04-26 10:00:00',
-    url_video: 'https://www.youtube.com/embed/AYdFb6rD6K0',
-  })
+  const params = useParams()
+  const navigate = useNavigate()
+
+  const [recipe, setRecipe] = useState({})
+
+  useEffect(() => {
+    const getRecipe = async () => {
+      const recipeFromServer = await fetchRecipe()
+      setRecipe(recipeFromServer)
+    }
+
+    getRecipe()
+  }, [])
+
+  const fetchRecipe = async () => {
+    const { id } = params
+
+    const res = await fetch(`http://localhost:3000/receitas/buscar/${id}`)
+
+    const data = await res.json()
+
+    return data
+  }
+
+  const deleteRecipe = async (id) => {
+    await fetch(`http://localhost:3000/receitas/excluir/${id}`, {
+      method: 'DELETE',
+    })
+
+    navigate('/')
+  }
+
+  const editRecipe = async (id) => {
+    navigate(`/recipes/edit/${id}`)
+  }
 
   return (
     <div className="page">
@@ -31,6 +47,16 @@ export const RecipeDetail = () => {
       <div className="page-content">
         <div className="restaurant">
           <div className="container">
+            <div className="actions">
+              <i
+                className="ti-pencil"
+                onClick={() => editRecipe(recipe.id)}
+              ></i>
+              <i
+                className="ti-trash"
+                onClick={() => deleteRecipe(recipe.id)}
+              ></i>
+            </div>
             <div className="content">
               <a href="#">
                 <img src={recipe.url_imagem} />
@@ -42,7 +68,7 @@ export const RecipeDetail = () => {
                     {recipe.tempo_preparo} min&nbsp;|&nbsp;
                     <i className="ti-server"></i> servings&nbsp;|&nbsp;
                     <i className="ti-book"></i>
-                    {recipe.categoria.descricao}
+                    {/*recipe.categoria.descricao*/}
                     <br />
                   </span>
                 </div>
@@ -61,14 +87,18 @@ export const RecipeDetail = () => {
                 </h3>
               </div>
               <div className="row content-text">
-                <iframe
-                  height={400}
-                  src={recipe.url_video}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Embedded youtube"
-                ></iframe>
+                {recipe.url_video ? (
+                  <iframe
+                    height={400}
+                    src={recipe.url_video}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title="Embedded youtube"
+                  ></iframe>
+                ) : (
+                  <span>-</span>
+                )}
               </div>
             </div>
 
@@ -109,7 +139,11 @@ export const RecipeDetail = () => {
               </div>
               <div className="row">
                 <div className="col">
-                  <div className="content-text">{recipe.observacoes}</div>
+                  {recipe.observacoes ? (
+                    <div className="content-text">{recipe.observacoes}</div>
+                  ) : (
+                    <span>-</span>
+                  )}
                 </div>
               </div>
             </div>

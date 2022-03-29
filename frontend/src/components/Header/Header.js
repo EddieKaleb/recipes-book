@@ -4,7 +4,7 @@ import './Header.css'
 
 export const Header = () => {
   return (
-    <div className="title-header">
+    <div className="main-header">
       <div className="container">
         <div className="row">
           <div className="col">

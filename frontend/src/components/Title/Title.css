@@ -16,6 +16,7 @@
 
 .title-header .icon-search i {
   font-size: 22px;
-  position: relative;
-  top: 3px;
+  position: absolute;
+  left: 20px;
+  top: 30px;
 }

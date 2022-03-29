@@ -5,12 +5,12 @@ import { Navbar } from './components/Navbar/Navbar'
 import { Home } from './components/Home/Home'
 
 import { CategoryList } from './components/Categories/CategoryList/CategoryList'
-import { RecipeAdd } from './components/Recipes/RecipeAdd/RecipeAdd'
 import { Menu } from './components/Menu/Menu'
 import { AuthSignIn } from './components/Auth/AuthSignIn/AuthSignIn'
 import { AuthSignUp } from './components/Auth/AuthSignUp/AuthSignUp'
 import { Search } from './components/Search/Search'
 import { RecipeDetail } from './components/Recipes/RecipeDetail/RecipeDetail'
+import { CreateRecipe } from './components/Recipes/_domain/CreateRecipe'
 
 function App() {
   return (
@@ -38,12 +38,21 @@ function App() {
         <Route path="/menu" exact element={<Menu />} />
         <Route path="/categories" exact element={<CategoryList />} />
         <Route path="/recipes/:id" element={<RecipeDetail />} />
-        <Route path="/recipes/new-recipe" exact element={<RecipeAdd />} />
+        <Route path="/recipes/new-recipe" exact element={<CreateRecipe />} />
+        <Route path="/recipes/edit/:id" exact element={<CreateRecipe />} />
         <Route path="/recipes/search" exact element={<Search />} />
         <Route
           path="/recipes/categories/:id"
           exact
           element={<CategoryList />}
+        />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: '1rem' }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
         />
       </Routes>
     </BrowserRouter>

@@ -3,6 +3,19 @@
   margin-bottom: 20px;
 }
 
+.restaurant .actions {
+  font-size: 22px;
+  position: absolute;
+  right: 10px;
+  top: 30px;
+  color: #000;
+}
+
+.restaurant .actions i {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
 .restaurant .content .mask {
   background: linear-gradient(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.5));
   position: absolute;
@@ -34,6 +47,18 @@
   color: #fff;
   font-size: 25px;
   margin-bottom: 8px;
+}
+
+@media (max-width: 450px) {
+  .restaurant .content .title h4 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 350px) {
+  .restaurant .content .title h4 {
+    font-size: 16px;
+  }
 }
 
 .restaurant .content .title span {

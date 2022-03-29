@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { Header } from './components/Header/Header'
 import { Navbar } from './components/Navbar/Navbar'
@@ -7,10 +7,10 @@ import { Home } from './components/Home/Home'
 import { CategoryList } from './components/Categories/CategoryList/CategoryList'
 import { Menu } from './components/Menu/Menu'
 import { AuthSignIn } from './components/Auth/AuthSignIn/AuthSignIn'
-import { AuthSignUp } from './components/Auth/AuthSignUp/AuthSignUp'
 import { Search } from './components/Search/Search'
 import { RecipeDetail } from './components/Recipes/RecipeDetail/RecipeDetail'
-import { CreateRecipe } from './components/Recipes/_domain/CreateRecipe'
+import { CreateRecipe } from './components/Recipes/RecipeAdd/_domain/CreateRecipe'
+import { SignUpUser } from './components/Auth/AuthSignUp/_domain/SignUpUser'
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
           }
         />
         <Route path="/signin" exact element={<AuthSignIn />} />
-        <Route path="/signup" exact element={<AuthSignUp />} />
+        <Route path="/signup" exact element={<SignUpUser />} />
         <Route path="/menu" exact element={<Menu />} />
         <Route path="/categories" exact element={<CategoryList />} />
         <Route path="/recipes/:id" element={<RecipeDetail />} />

@@ -39,7 +39,7 @@ export const RecipeAdd = ({ form, onSubmit }) => {
               </div>
               <div className="item-input-wrap input-dropdown-wrap">
                 <select placeholder="Category" {...register('id_categoria')}>
-                  <option value="" disabled selected>
+                  <option value="" defaultValue={-1}>
                     Select a category*
                   </option>
                   {categories.map((category) => {

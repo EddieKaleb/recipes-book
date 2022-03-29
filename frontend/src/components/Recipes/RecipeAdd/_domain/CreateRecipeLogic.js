@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { RecipeAdd } from '../RecipeAdd'
 import * as yup from 'yup'
-import { RecipeAdd } from '../RecipeAdd/RecipeAdd'
 
 const CreateRecipeFormSchema = yup.object().shape({
   titulo: yup.string().min(3).max(100).required(),

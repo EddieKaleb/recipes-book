@@ -3,6 +3,7 @@ const config = {
   password: 'root',
   database: 'receitas',
   host: '127.0.0.1',
+  port: '3333',
   dialect: 'mysql',
 }
 

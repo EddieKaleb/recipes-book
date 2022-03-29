@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom'
 
 import './AuthSignIn.css'
 
-export const AuthSignIn = () => {
+export const AuthSignIn = ({ form, onSubmit }) => {
+  const { formState, register, handleSubmit } = form
   return (
     <div className="page">
       <div className="page-content">
@@ -13,12 +14,22 @@ export const AuthSignIn = () => {
                 <img src="images/logo.png" alt="" />
               </div>
             </div>
-            <form className="list">
+            <form onSubmit={handleSubmit(onSubmit)} className="list">
               <div className="item-input-wrap">
-                <input type="email" placeholder="Email" required />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  {...register('email')}
+                  required
+                />
               </div>
               <div className="item-input-wrap no-mb">
-                <input type="password" placeholder="Password" required />
+                <input
+                  type="password"
+                  {...register('senha')}
+                  placeholder="Password"
+                  required
+                />
               </div>
 
               <br />

@@ -25,6 +25,7 @@ const controller = {
     const { nome, email, senha } = req.body
     const senhaCrypto = await bcrypt.hash(senha, 12)
     const validarEmail = await Usuario.findOne({ where: { email } })
+    console.log(validarEmail)
     if (validarEmail) {
       res.status(400).json({ message: 'E-mail já cadastrado!' })
     } else {

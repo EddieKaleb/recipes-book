@@ -9,8 +9,23 @@ import './assets/css/general.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 ReactDOM.render(
   <React.StrictMode>
+    <ToastContainer
+      position="bottom-center"
+      theme="dark"
+      autoClose={2000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
     <App />
   </React.StrictMode>,
   document.getElementById('root'),

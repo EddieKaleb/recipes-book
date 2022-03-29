@@ -6,11 +6,11 @@ import { Home } from './components/Home/Home'
 
 import { CategoryList } from './components/Categories/CategoryList/CategoryList'
 import { Menu } from './components/Menu/Menu'
-import { AuthSignIn } from './components/Auth/AuthSignIn/AuthSignIn'
 import { Search } from './components/Search/Search'
 import { RecipeDetail } from './components/Recipes/RecipeDetail/RecipeDetail'
 import { CreateRecipe } from './components/Recipes/RecipeAdd/_domain/CreateRecipe'
 import { SignUpUser } from './components/Auth/AuthSignUp/_domain/SignUpUser'
+import { SignInUser } from './components/Auth/AuthSignIn/_domain/SignInUser'
 
 function App() {
   return (
@@ -33,7 +33,7 @@ function App() {
             </div>
           }
         />
-        <Route path="/signin" exact element={<AuthSignIn />} />
+        <Route path="/signin" exact element={<SignInUser />} />
         <Route path="/signup" exact element={<SignUpUser />} />
         <Route path="/menu" exact element={<Menu />} />
         <Route path="/categories" exact element={<CategoryList />} />

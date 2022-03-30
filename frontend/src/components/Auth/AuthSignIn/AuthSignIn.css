@@ -4,6 +4,23 @@
   margin-bottom: 25px;
 }
 
+.login .logos {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 800px) {
+  .login .logos img {
+    width: 12rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .login .logos img {
+    width: 10rem;
+  }
+}
+
 .login .list .button {
   margin-top: 0;
 }

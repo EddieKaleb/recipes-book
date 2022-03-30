@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import { Link, useLocation, useParams } from 'react-router-dom'
+import { Skeleton } from '../../Skeleton/Skeleton'
 import { Title } from '../../Title/Title'
 
 import { RecipeItem } from '../RecipeItem/RecipeItem'
@@ -10,6 +11,8 @@ import './RecipeList.css'
 export const RecipeList = ({ search }) => {
   const location = useLocation()
   const params = useParams()
+  const SKELETON_SIZE = 6
+  const [isLoading, setLoading] = useState(true)
 
   const [recipes, setRecipes] = useState([])
   const [category, setCategory] = useState([])
@@ -18,8 +21,13 @@ export const RecipeList = ({ search }) => {
 
   useEffect(() => {
     const getRecipes = async () => {
+      setLoading(true)
       const recipesFromServer = await fetchRecipes()
       setRecipes(recipesFromServer)
+
+      setTimeout(() => {
+        setLoading(false)
+      }, 2000)
     }
 
     const getSearchRecipes = async () => {
@@ -28,8 +36,13 @@ export const RecipeList = ({ search }) => {
     }
 
     const getRecipesByCategory = async () => {
+      setLoading(true)
       const recipesFromServer = await fetchRecipesByCategory()
       setSearchedRecipes(recipesFromServer)
+
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000)
     }
 
     const getCategoryById = async () => {
@@ -44,6 +57,9 @@ export const RecipeList = ({ search }) => {
       getCategoryById()
     } else {
       getSearchRecipes()
+      setTimeout(() => {
+        setLoading(false)
+      }, 2000)
     }
   }, [search])
 
@@ -107,17 +123,35 @@ export const RecipeList = ({ search }) => {
         ) : (
           <span></span>
         )}
+
         <div className="container">
           <div className="row justify-content-md-center justify-content-lg-start">
-            {location.pathname === '/' ? (
-              recipes.map((recipe) => (
-                <div
-                  key={recipe.id}
-                  className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
-                >
-                  <RecipeItem recipe={recipe} />
+            {isLoading ? (
+              <div className="skeleton">
+                {[...Array(SKELETON_SIZE)].map((e) => (
+                  <span key={e} className="skeleton-element">
+                    <Skeleton />
+                  </span>
+                ))}
+              </div>
+            ) : location.pathname === '/' ? (
+              recipes.length ? (
+                recipes.map((recipe) => (
+                  <div
+                    key={recipe.id}
+                    className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
+                  >
+                    <RecipeItem recipe={recipe} />
+                  </div>
+                ))
+              ) : (
+                <div>
+                  <span>Hello, add your first recipe on "+" button!</span>
+                  <div className="empty-icon-container">
+                    <img className="empty-icon" src={'/images/bowl.svg'} />
+                  </div>
                 </div>
-              ))
+              )
             ) : searchedRecipes.length ? (
               searchedRecipes.map((recipe) => (
                 <div
@@ -128,7 +162,12 @@ export const RecipeList = ({ search }) => {
                 </div>
               ))
             ) : (
-              <span>We haven't find any result!</span>
+              <div>
+                <span>We haven't find any result!</span>
+                <div className="empty-icon-container">
+                  <img className="empty-icon" src={'/images/bowl.svg'} />
+                </div>
+              </div>
             )}
           </div>
         </div>

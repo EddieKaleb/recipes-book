@@ -4,6 +4,10 @@
   margin-bottom: 25px;
 }
 
+.segments-page {
+  padding: 80px 0 30px !important;
+}
+
 .login .logos {
   display: flex;
   justify-content: center;

@@ -29,7 +29,11 @@ export const Search = () => {
       </div>
 
       <div className="page-content">
-        <RecipeList search={searchInput} />
+        <div className="container">
+          <div className="row justify-content-md-center justify-content-lg-start">
+            <RecipeList search={searchInput} />
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
+import { Title } from '../../Title/Title'
 
 import { RecipeItem } from '../RecipeItem/RecipeItem'
 
@@ -8,6 +9,7 @@ import './RecipeList.css'
 
 export const RecipeList = ({ search }) => {
   const location = useLocation()
+  const params = useParams()
 
   const [recipes, setRecipes] = useState([])
 
@@ -24,8 +26,15 @@ export const RecipeList = ({ search }) => {
       setSearchedRecipes(recipesFromServer)
     }
 
+    const getRecipesByCategory = async () => {
+      const recipesFromServer = await fetchRecipesByCategory()
+      setSearchedRecipes(recipesFromServer)
+    }
+
     if (location.pathname === '/') {
       getRecipes()
+    } else if (location.pathname.includes('/recipes/categories')) {
+      getRecipesByCategory()
     } else {
       getSearchRecipes()
     }
@@ -38,17 +47,23 @@ export const RecipeList = ({ search }) => {
       `http://localhost:3000/receitas/filtrar?titulo=${search}`,
     )
 
-    const data = await res.json()
-
-    return data
+    return await res.json()
   }
 
   const fetchRecipes = async () => {
     const res = await fetch('http://localhost:3000/receitas')
 
-    const data = await res.json()
+    return await res.json()
+  }
 
-    return data
+  const fetchRecipesByCategory = async () => {
+    const { id } = params
+
+    if (!id) return
+
+    const res = await fetch(`http://localhost:3000/receitas/categorias/${id}`)
+
+    return await res.json()
   }
 
   return (
@@ -57,12 +72,13 @@ export const RecipeList = ({ search }) => {
         {location.pathname === '/' ? (
           <div className="section-title">
             <h3>
-              My Recipes
               <Link to="/categories" className="see-all-link">
                 See Categories
               </Link>
             </h3>
           </div>
+        ) : location.pathname.includes('/recipes/categories') ? (
+          <Title backTo="/categories" title="Recipes from Category" />
         ) : (
           <span></span>
         )}
@@ -86,7 +102,7 @@ export const RecipeList = ({ search }) => {
               </div>
             ))
           ) : (
-            <span>Nenhum resultado encontrado!</span>
+            <span>We haven't find any result!</span>
           )}
         </div>
       </div>

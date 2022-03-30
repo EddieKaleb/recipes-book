@@ -12,6 +12,7 @@ export const RecipeList = ({ search }) => {
   const params = useParams()
 
   const [recipes, setRecipes] = useState([])
+  const [category, setCategory] = useState([])
 
   const [searchedRecipes, setSearchedRecipes] = useState([])
 
@@ -31,10 +32,16 @@ export const RecipeList = ({ search }) => {
       setSearchedRecipes(recipesFromServer)
     }
 
+    const getCategoryById = async () => {
+      const categoryFromServer = await fetchCategoryById()
+      setCategory(categoryFromServer)
+    }
+
     if (location.pathname === '/') {
       getRecipes()
     } else if (location.pathname.includes('/recipes/categories')) {
       getRecipesByCategory()
+      getCategoryById()
     } else {
       getSearchRecipes()
     }
@@ -66,44 +73,64 @@ export const RecipeList = ({ search }) => {
     return await res.json()
   }
 
+  const fetchCategoryById = async () => {
+    const { id } = params
+
+    if (!id) return
+
+    const res = await fetch(`http://localhost:3000/categorias/buscar/${id}`)
+
+    return await res.json()
+  }
+
   return (
-    <div className="popular-menu segments">
-      <div className="container">
+    <div>
+      {location.pathname.includes('/recipes/categories') ? (
+        <div className="section-title">
+          <Title backTo="/categories" title={category.descricao} />
+        </div>
+      ) : (
+        <span></span>
+      )}
+      <div className="popular-menu segments">
         {location.pathname === '/' ? (
-          <div className="section-title">
-            <h3>
-              <Link to="/categories" className="see-all-link">
-                See Categories
-              </Link>
-            </h3>
+          <div className="container">
+            <div className="section-title">
+              <h3>
+                All Recipes
+                <Link to="/categories" className="see-all-link">
+                  See Categories
+                </Link>
+              </h3>
+            </div>
           </div>
-        ) : location.pathname.includes('/recipes/categories') ? (
-          <Title backTo="/categories" title="Recipes from Category" />
         ) : (
           <span></span>
         )}
-        <div className="row justify-content-md-center justify-content-lg-start">
-          {location.pathname === '/' ? (
-            recipes.map((recipe) => (
-              <div
-                key={recipe.id}
-                className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
-              >
-                <RecipeItem recipe={recipe} />
-              </div>
-            ))
-          ) : searchedRecipes.length ? (
-            searchedRecipes.map((recipe) => (
-              <div
-                key={recipe.id}
-                className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
-              >
-                <RecipeItem recipe={recipe} />
-              </div>
-            ))
-          ) : (
-            <span>We haven't find any result!</span>
-          )}
+        <div className="container">
+          <div className="row justify-content-md-center justify-content-lg-start">
+            {location.pathname === '/' ? (
+              recipes.map((recipe) => (
+                <div
+                  key={recipe.id}
+                  className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
+                >
+                  <RecipeItem recipe={recipe} />
+                </div>
+              ))
+            ) : searchedRecipes.length ? (
+              searchedRecipes.map((recipe) => (
+                <div
+                  key={recipe.id}
+                  className="col col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3"
+                >
+                  <RecipeItem recipe={recipe} />
+                </div>
+              ))
+            ) : (
+              <span>We haven't find any result!</span>
+            )}
+          </div>
         </div>
       </div>
     </div>

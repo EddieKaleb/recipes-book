@@ -9,7 +9,7 @@ export const Header = () => {
         <div className="row">
           <div className="col">
             <div className="logos">
-              <h2>Recipes Book</h2>
+              <img src="images/logo-recipes-horiz.svg" alt="" />
             </div>
           </div>
           <div className="col-2">

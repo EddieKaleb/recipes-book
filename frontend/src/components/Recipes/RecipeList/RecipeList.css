@@ -74,6 +74,16 @@
   color: #555;
 }
 
+.popular-menu h3 {
+  font-size: 15px;
+  font-family: 'Prompt', sans-serif;
+}
+
+.popular-menu .see-all-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .popular-menu .content .text span {
   display: block;
   margin-bottom: 5px;

@@ -10,12 +10,31 @@ import { CategoryList } from './components/Categories/CategoryList/CategoryList'
 import { CreateRecipe } from './components/Recipes/RecipeAdd/_domain/CreateRecipe'
 import { SignUpUser } from './components/Auth/AuthSignUp/_domain/SignUpUser'
 import { SignInUser } from './components/Auth/AuthSignIn/_domain/SignInUser'
+import { Header } from './components/Header/Header'
+import { Home } from './components/Home/Home'
+import { Navbar } from './components/Navbar/Navbar'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" exact element={<Main />} />
+        <Route
+          path="/"
+          exact
+          element={
+            <div id="app">
+              <div className="view view-main view-init ios-edges" data-url="/">
+                <div className="page page-home">
+                  <div className="page-content">
+                    <Header />
+                    <Home />
+                  </div>
+                </div>
+                <Navbar />
+              </div>
+            </div>
+          }
+        />
         <Route path="/signin" exact element={<SignInUser />} />
         <Route path="/signup" exact element={<SignUpUser />} />
         <Route path="/menu" exact element={<Menu />} />

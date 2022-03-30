@@ -15,6 +15,8 @@ const controller = {
     } else {
       res.status(400).json({ message: 'E-mail não cadastrado!' })
     }
+    //SALVANDO USUARIO NA SESSION
+    req.session.usuario = usuarioSalvo;
   },
 }
 

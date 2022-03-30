@@ -6,7 +6,7 @@ const controller = {
     //LISTAR TODAS RECEITAS
     index: async (req, res, next) => {
         const receitas = await Receita.findAll();
-        res.json({ receitas, usuario: req.session.usuario, text: "teste de envio" })
+        res.json(receitas)
 
     },
     //LISTAR RECEITAS POR ID

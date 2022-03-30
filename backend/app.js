@@ -3,7 +3,8 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const cors = require('cors')
+const cors = require('cors');
+const session = require('express-session');
 
 const usersRouter = require("./routes/usuarios");
 const categoryRouter = require("./routes/categorias");
@@ -11,6 +12,12 @@ const recipesRouter = require("./routes/receitas");
 const accessRouter = require("./routes/acesso");
 
 const app = express();
+
+app.use(session({
+  secret:"BooksRecipesProject",
+  resave: true,
+  saveUninitialized: true
+}))
 
 app.use(cors())
 app.use(logger("dev"));

@@ -1,17 +1,17 @@
 use receitas;
 
 INSERT INTO receitas.categoria VALUES 
-(1,'Bolos e Tortas','https://storage.alboom.ninja/sites/10640/albuns/395110/torta_macarron.jpg?t=1551373469'),
-(2,'Carnes','https://www.charbroil.com/media/ctm//a/p/apple_butter_bbq_ribs.jpg.jpeg'),
-(3,'Aves','https://www.valeriebertinelli.com/wp-content/uploads/2019/07/Barbeque-Chicken-with-Spicy-BBQ-Sauce-e1563389324414.jpg'),
-(4,'Peixes Frutos do Mar','https://static.onecms.io/wp-content/uploads/sites/19/2013/06/06/firecracker-grilled-salmon-sl-4x3-1-2000.jpg'),
-(5,'Saladas e Molhos','https://img.taste.com.au/eda2xEj2/taste/2018/08/17-minute-caesar-salad_1980x1320-140424-1.jpg'),
-(6,'Sopas','https://www.eatthis.com/wp-content/uploads/sites/4/2022/01/hot-and-sour-soup.jpg?quality=82&strip=all'),
-(7,'Massas','https://renata.com.br/images/receitas/43/renata-imagem-receitas-macarrao-alla-norma-1-xl.jpg'),
-(8,'Bebidas','https://churrascariameinhaus.com.br/blog/wp-content/uploads/2020/04/cinco-drinks-que-casam-perfeitamente-com-churrasco.jpg'),
-(9,'Doces e Sobremesas','https://images.aws.nestle.recipes/resized/3eb2579cdb04726a58431318ac293569_brigadeiro-receitas-nestle_1200_600.jpg'),
-(10,'Lanches','https://s2.glbimg.com/epsRFVba8TkIbLdVyR6LfCus5ms=/0x0:950x401/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_b3309463db95468aa275bd532137e960/internal_photos/bs/2021/S/A/BT5YakR22608UgXICZvg/wessel.png'),
-(11,'Alimentação Saudável','https://thumbs.dreamstime.com/b/healthy-food-selection-healthy-food-selection-fruits-vegetables-seeds-superfood-cereals-gray-background-121936825.jpg');
+(1,'Cakes and Pies','https://storage.alboom.ninja/sites/10640/albuns/395110/torta_macarron.jpg?t=1551373469'),
+(2,'Meat','https://www.charbroil.com/media/ctm//a/p/apple_butter_bbq_ribs.jpg.jpeg'),
+(3,'Roast','https://www.valeriebertinelli.com/wp-content/uploads/2019/07/Barbeque-Chicken-with-Spicy-BBQ-Sauce-e1563389324414.jpg'),
+(4,'Seafood','https://static.onecms.io/wp-content/uploads/sites/19/2013/06/06/firecracker-grilled-salmon-sl-4x3-1-2000.jpg'),
+(5,'Salads and Sauces','https://img.taste.com.au/eda2xEj2/taste/2018/08/17-minute-caesar-salad_1980x1320-140424-1.jpg'),
+(6,'Soups','https://www.eatthis.com/wp-content/uploads/sites/4/2022/01/hot-and-sour-soup.jpg?quality=82&strip=all'),
+(7,'Dough/Pasta','https://renata.com.br/images/receitas/43/renata-imagem-receitas-macarrao-alla-norma-1-xl.jpg'),
+(8,'Drinks/Beverages','https://churrascariameinhaus.com.br/blog/wp-content/uploads/2020/04/cinco-drinks-que-casam-perfeitamente-com-churrasco.jpg'),
+(9,'Sweets and Desserts','https://images.aws.nestle.recipes/resized/3eb2579cdb04726a58431318ac293569_brigadeiro-receitas-nestle_1200_600.jpg'),
+(10,'Snacks','https://s2.glbimg.com/epsRFVba8TkIbLdVyR6LfCus5ms=/0x0:950x401/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_b3309463db95468aa275bd532137e960/internal_photos/bs/2021/S/A/BT5YakR22608UgXICZvg/wessel.png'),
+(11,'Healthy','https://thumbs.dreamstime.com/b/healthy-food-selection-healthy-food-selection-fruits-vegetables-seeds-superfood-cereals-gray-background-121936825.jpg');
 
 INSERT INTO receitas.usuario VALUES 
 (1,'glenioanderson@gmail.com','123456','glenio'),

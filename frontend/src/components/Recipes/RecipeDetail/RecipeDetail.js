@@ -2,13 +2,18 @@ import { useEffect, useState } from 'react'
 import { Title } from '../../Title/Title'
 import { useParams, useNavigate } from 'react-router-dom'
 
+import { toast } from 'react-toastify'
+
 import './RecipeDetail.css'
 
 export const RecipeDetail = () => {
   const params = useParams()
   const navigate = useNavigate()
+  let avoidDelete = false
 
   const [recipe, setRecipe] = useState({})
+  const [category, setRecipeCategory] = useState({})
+  const [user, setRecipeUser] = useState({})
 
   useEffect(() => {
     const getRecipe = async () => {
@@ -16,8 +21,20 @@ export const RecipeDetail = () => {
       setRecipe(recipeFromServer)
     }
 
+    const getRecipeCategory = async () => {
+      const categoryFromServer = await fetchRecipeCategory()
+      setRecipeCategory(categoryFromServer)
+    }
+
+    const getRecipeUser = async () => {
+      const userFromServer = await fetchRecipeUser()
+      setRecipeUser(userFromServer)
+    }
+
     getRecipe()
-  }, [])
+    getRecipeCategory()
+    getRecipeUser()
+  }, [category, user])
 
   const fetchRecipe = async () => {
     const { id } = params
@@ -29,12 +46,61 @@ export const RecipeDetail = () => {
     return data
   }
 
+  const fetchRecipeCategory = async () => {
+    const res = await fetch(
+      `http://localhost:3000/categorias/buscar/${recipe.id_categoria}`,
+    )
+    const data = await res.json()
+
+    return data
+  }
+
+  const fetchRecipeUser = async () => {
+    const res = await fetch(
+      `http://localhost:3000/usuarios/buscar/${recipe.id_usuario}`,
+    )
+    const data = await res.json()
+
+    return data
+  }
+
   const deleteRecipe = async (id) => {
     await fetch(`http://localhost:3000/receitas/excluir/${id}`, {
       method: 'DELETE',
     })
 
     navigate('/')
+  }
+
+  const requestDeleteRecipe = (id) => {
+    toast.success(
+      <span>
+        Exclusão realizada com sucesso!&nbsp;
+        <a
+          className="delete-link"
+          onClick={() => {
+            avoidDelete = true
+          }}
+        >
+          {'Clique aqui para desfazer.'}
+        </a>
+      </span>,
+      {
+        closeOnClick: false,
+        pauseOnHover: false,
+        pauseOnFocusLoss: false,
+      },
+    )
+
+    setTimeout(async () => {
+      if (!avoidDelete) {
+        await deleteRecipe(id)
+        toast.success('Exclusão realizada com sucesso!')
+      } else {
+        toast.success('Exclusão desfeita com sucesso!')
+      }
+      avoidDelete = false
+    }, 5000)
   }
 
   const editRecipe = async (id) => {
@@ -54,7 +120,7 @@ export const RecipeDetail = () => {
               ></i>
               <i
                 className="ti-trash"
-                onClick={() => deleteRecipe(recipe.id)}
+                onClick={() => requestDeleteRecipe(recipe.id)}
               ></i>
             </div>
             <div className="content">
@@ -65,11 +131,17 @@ export const RecipeDetail = () => {
                   <h4>{recipe.titulo}</h4>
                   <span className="subtitle">
                     <i className="ti-timer"></i>
-                    {recipe.tempo_preparo} min&nbsp;|&nbsp;
-                    <i className="ti-server"></i> servings&nbsp;|&nbsp;
+                    {recipe.tempo_preparo} Min&nbsp;|&nbsp;
+                    <i className="ti-server"></i>
+                    {recipe.rendimento}
+                    {' Servings'} &nbsp;|&nbsp;
                     <i className="ti-book"></i>
-                    {/*recipe.categoria.descricao*/}
+                    {category?.descricao}
                     <br />
+                  </span>
+                  <span className="subtitle">
+                    {' '}
+                    <i className="ti-user"></i>Autor: {user.nome}
                   </span>
                 </div>
               </a>

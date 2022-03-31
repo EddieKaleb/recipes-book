@@ -11,7 +11,7 @@ export const AuthSignIn = ({ form, onSubmit }) => {
           <div className="container">
             <div className="logos">
               <div className="image">
-                <img src="images/logo.png" alt="" />
+                <img src="images/logo-recipes.svg" alt="" />
               </div>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="list">

@@ -1,16 +1,18 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { Header } from './components/Header/Header'
-import { Navbar } from './components/Navbar/Navbar'
-import { Home } from './components/Home/Home'
-
-import { CategoryList } from './components/Categories/CategoryList/CategoryList'
+import { Main } from './components/Main/Main'
 import { Menu } from './components/Menu/Menu'
 import { Search } from './components/Search/Search'
+import { NotFound } from './components/NotFound/NotFound'
+import { RecipeList } from './components/Recipes/RecipeList/RecipeList'
 import { RecipeDetail } from './components/Recipes/RecipeDetail/RecipeDetail'
+import { CategoryList } from './components/Categories/CategoryList/CategoryList'
 import { CreateRecipe } from './components/Recipes/RecipeAdd/_domain/CreateRecipe'
 import { SignUpUser } from './components/Auth/AuthSignUp/_domain/SignUpUser'
 import { SignInUser } from './components/Auth/AuthSignIn/_domain/SignInUser'
+import { Header } from './components/Header/Header'
+import { Home } from './components/Home/Home'
+import { Navbar } from './components/Navbar/Navbar'
 
 function App() {
   return (
@@ -38,22 +40,11 @@ function App() {
         <Route path="/menu" exact element={<Menu />} />
         <Route path="/categories" exact element={<CategoryList />} />
         <Route path="/recipes/:id" element={<RecipeDetail />} />
-        <Route path="/recipes/new-recipe" exact element={<CreateRecipe />} />
         <Route path="/recipes/edit/:id" exact element={<CreateRecipe />} />
+        <Route path="/recipes/categories/:id" exact element={<RecipeList />} />
+        <Route path="/recipes/new-recipe" exact element={<CreateRecipe />} />
         <Route path="/recipes/search" exact element={<Search />} />
-        <Route
-          path="/recipes/categories/:id"
-          exact
-          element={<CategoryList />}
-        />
-        <Route
-          path="*"
-          element={
-            <main style={{ padding: '1rem' }}>
-              <p>There's nothing here!</p>
-            </main>
-          }
-        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )

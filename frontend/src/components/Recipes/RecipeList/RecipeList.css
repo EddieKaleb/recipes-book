@@ -2,11 +2,34 @@
 .popular-menu.segments {
   padding-top: 26px;
   padding-bottom: 30px;
+  min-height: 100vh;
 }
 
 .popular-menu .content {
   display: flex;
   flex-wrap: wrap;
+  justify-content: start;
+}
+
+.empty-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.empty-icon {
+  width: 200px;
+}
+
+.skeleton {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.skeleton-element {
+  padding: 0 0.2rem 0 0;
 }
 
 .popular-menu .content .fig {
@@ -72,6 +95,16 @@
   margin-bottom: 0;
   font-size: 15px;
   color: #555;
+}
+
+.popular-menu h3 {
+  font-size: 15px;
+  font-family: 'Prompt', sans-serif;
+}
+
+.popular-menu .see-all-link {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .popular-menu .content .text span {

@@ -3,8 +3,11 @@ import { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import CreateRecipeLogic from './CreateRecipeLogic'
 
+import { toast } from 'react-toastify'
+
 export const CreateRecipe = () => {
   const [data, setData] = useState({})
+  const [editMode, setEditMode] = useState(false)
 
   const navigate = useNavigate()
   const params = useParams()
@@ -38,40 +41,66 @@ export const CreateRecipe = () => {
     }
 
     if (location.pathname.includes('/recipes/edit')) {
+      setEditMode(true)
       fetchRecipe()
+    } else {
+      setEditMode(false)
     }
   }, [])
 
   const handleSubmit = async (data) => {
     const submitData = {
       ...data,
-      id_usuario: 1,
+      id: params.id,
+      id_usuario: 9,
       data: moment().format('YYYY-MM-DD'),
     }
 
-    delete submitData['id']
+    if (!editMode) {
+      delete submitData['id']
+    }
 
     Object.keys(submitData).map((key) => {
-      if (submitData[key] == '') {
+      if (submitData[key] == '' && key !== 'id') {
         delete submitData[key]
       }
     })
     // return async function to submit data to backend
-    return fetch('http://localhost:3000/receitas/cadastrar', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+    return fetch(
+      `http://localhost:3000/receitas/${
+        editMode ? `editar/${params.id}` : 'cadastrar'
+      }`,
+      {
+        method: editMode ? 'PUT' : 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submitData),
       },
-      body: JSON.stringify(submitData),
-    })
-      .then((response) => response.json())
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response)
+        }
+
+        return response.json()
+      })
       .then(() => {
+        if (editMode) {
+          toast.success('Edição realizada com sucesso!')
+        } else {
+          toast.success('Cadastro realizado com sucesso!')
+        }
         navigate('/')
       })
   }
 
   return (
-    <CreateRecipeLogic defaultValues={defaultValues} onSubmit={handleSubmit} />
+    <CreateRecipeLogic
+      defaultValues={defaultValues}
+      onSubmit={handleSubmit}
+      isEditMode={editMode}
+    />
   )
 }

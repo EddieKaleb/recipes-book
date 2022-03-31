@@ -4,25 +4,25 @@
   margin-bottom: 25px;
 }
 
-.login .logos .image {
-  width: 80px;
-  height: 80px;
-  background: #d00807;
-  display: inline-block;
-  border-radius: 6px;
-  line-height: 80px;
-  position: relative;
+.segments-page {
+  padding: 80px 0 30px !important;
 }
 
-.login .logos .image img {
-  width: 65px;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+.login .logos {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 800px) {
+  .login .logos img {
+    width: 12rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .login .logos img {
+    width: 10rem;
+  }
 }
 
 .login .list .button {

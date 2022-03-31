@@ -33,3 +33,12 @@
     text-overflow: ellipsis;
   }
 }
+
+.recipe-title {
+  color: #000 !important;
+}
+
+.recipe-category {
+  text-decoration: none;
+  color: #000;
+}

@@ -8,6 +8,9 @@ const controller = {
     const usuarioSalvo = await Usuario.findOne({ where: { email } })
     if (usuarioSalvo) {
       if (await bcrypt.compare(senha, usuarioSalvo.senha)) {
+        //SALVANDO USUARIO NA SESSION
+        req.session.usuario = usuarioSalvo;
+        res.cookie("usuario", usuarioSalvo)
         res.json(usuarioSalvo)
       } else {
         res.status(400).json({ message: 'Dados de login inválidos!' })
@@ -15,8 +18,6 @@ const controller = {
     } else {
       res.status(400).json({ message: 'E-mail não cadastrado!' })
     }
-    //SALVANDO USUARIO NA SESSION
-    req.session.usuario = usuarioSalvo;
   },
 }
 

@@ -12,6 +12,9 @@ router.get("/categorias/:id", receitasController.categorias);
 // //LISTAR RECEITAS POR TÍTULO
 router.get("/filtrar", receitasController.titulo);
 
+// //LISTAR RECEITAS POR USUÁRIO
+router.get("/filtrar/usuario", receitasController.usuario);
+
 // //CADASTRAR RECEITAS
 router.post("/cadastrar", receitasController.add);
 

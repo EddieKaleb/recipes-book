@@ -36,6 +36,15 @@ const controller = {
             res.status(404).send("Categoria de receita não encontrada!") //ESTÁ TRAZENDO UM ARRAY VAZIO AO INVÉS DA MENSAGEM
         }
     },
+    //LISTAR TODAS AS RECEITAS DO USUARIO
+    usuario: async (req, res, next) => {
+        const usuarioLogado = req.cookies.usuario.id;
+        console.log(usuarioLogado)
+        const receitas = await Receita.findAll(
+            { where: { id_usuario: usuarioLogado } }
+        );
+        res.json(receitas)
+    },
     //LISTAR RECEITAS POR TÍTULO (VERIFICAR IMPLEMENTAÇÃO)
     titulo: async (req, res, next) => {
         const { titulo } = req.query;
@@ -49,7 +58,7 @@ const controller = {
     },
     //CADASTRAR RECEITAS
     add: async (req, res, next) => {
-        const { titulo, tempo_preparo, rendimento, ingredientes, modo_preparo, observacoes, url_imagem, id_usuario, id_categoria, data, url_video } = req.body;
+        const { titulo, tempo_preparo, rendimento, ingredientes, modo_preparo, observacoes, url_imagem, id_categoria, data, url_video } = req.body;
         const novaReceita = await Receita.create({
             titulo,
             tempo_preparo,
@@ -58,7 +67,7 @@ const controller = {
             modo_preparo,
             observacoes,
             url_imagem,
-            id_usuario,
+            id_usuario: req.cookies.usuario.id,
             id_categoria,
             data,
             url_video
@@ -70,25 +79,37 @@ const controller = {
         }
     },
     edit: async (req, res, next) => {
-        const { id, titulo, tempo_preparo, rendimento, ingredientes, modo_preparo, observacoes, url_imagem, id_usuario, id_categoria, data, url_video } = req.body;
-        const receitaEditada = await Receita.update({
-            titulo,
-            tempo_preparo,
-            rendimento,
-            ingredientes,
-            modo_preparo,
-            observacoes,
-            url_imagem,
-            id_usuario,
-            id_categoria,
-            data,
-            url_video
-        }, { where: { id } })
-        if (receitaEditada) {
-            res.json(await Receita.findByPk(id))
+        const { id } = req.params;
+        const { titulo, tempo_preparo, rendimento, ingredientes, modo_preparo, observacoes, url_imagem, id_categoria, data, url_video } = req.body;
+        const buscarReceita = await Receita.findByPk(id);
+        if (buscarReceita) {
+            if (buscarReceita.id_usuario === req.cookies.usuario.id) {
+                const receitaEditada = await Receita.update({
+                    titulo,
+                    tempo_preparo,
+                    rendimento,
+                    ingredientes,
+                    modo_preparo,
+                    observacoes,
+                    url_imagem,
+                    id_usuario: req.cookies.usuario.id,
+                    id_categoria,
+                    data,
+                    url_video
+                }, { where: { id } })
+                if (receitaEditada) {
+                    res.json(await Receita.findByPk(id))
+                } else {
+                    res.status(404).send("Receita não atualizada!")
+                }
+            } else {
+                res.status(404).send("Este usuário não tem permissão para editar esta receita!")
+            }
         } else {
-            res.status(404).send("Receita não atualizada!")
+            res.status(404).send("Receita não encontrada!")
         }
+
+
     },
     //EXCLUIR RECEITAS
     delete: async (req, res, next) => {

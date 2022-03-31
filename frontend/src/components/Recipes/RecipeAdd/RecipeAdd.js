@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Title } from '../../Title/Title'
 import './RecipeAdd.css'
 
-export const RecipeAdd = ({ form, onSubmit }) => {
+export const RecipeAdd = ({ form, onSubmit, isEditMode }) => {
   const { formState, register, handleSubmit } = form
   const [categories, setCategories] = useState([])
 
@@ -24,7 +24,7 @@ export const RecipeAdd = ({ form, onSubmit }) => {
 
   return (
     <div className="page">
-      <Title title={'Add New Recipe'} />
+      <Title title={isEditMode ? 'Edit Recipe' : 'Add New Recipe'} />
 
       <div className="page-content">
         <div className="reservation segments-page">
@@ -104,7 +104,8 @@ export const RecipeAdd = ({ form, onSubmit }) => {
               </div>
 
               <button type="submit" className="button">
-                <i className="ti-clipboard"></i>Save Recipe
+                <i className="ti-clipboard"></i>
+                {isEditMode ? 'Edit Recipe' : 'Save Recipe'}
               </button>
             </form>
           </div>

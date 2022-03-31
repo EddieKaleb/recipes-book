@@ -11,6 +11,11 @@
   color: #000;
 }
 
+.delete-link {
+  text-decoration: underline;
+  color: #fff;
+}
+
 .restaurant .actions i {
   margin-right: 10px;
   cursor: pointer;

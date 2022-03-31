@@ -11,7 +11,7 @@ import './RecipeList.css'
 export const RecipeList = ({ search }) => {
   const location = useLocation()
   const params = useParams()
-  const SKELETON_SIZE = 6
+  const SKELETON_SIZE = 12
   const [isLoading, setLoading] = useState(true)
 
   const [recipes, setRecipes] = useState([])

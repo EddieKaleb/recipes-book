@@ -1,11 +1,18 @@
-const { Receita, Sequelize } = require('../models')
+const { Receita, Sequelize, Usuario } = require('../models');
 const op = Sequelize.Op;
 
 const controller = {
 
     //LISTAR TODAS RECEITAS
     index: async (req, res, next) => {
-        const receitas = await Receita.findAll();
+        const receitas = await Receita.findAll({
+            include: {
+                model: Usuario,
+                as: "usuarios",
+                attributes: ["id", "nome", "email"]
+            }
+
+        })
         res.json(receitas)
     },
     //LISTAR RECEITAS POR ID

@@ -1,3 +1,4 @@
+
 module.exports = (sequelize, DataType) => {
     const Receita = sequelize.define("Receita", {
         id: {
@@ -37,9 +38,10 @@ module.exports = (sequelize, DataType) => {
             allowNull: true,
             defaultValue: 'http://iraja.com.br/wp-content/uploads/2017/09/banner-placeholder.jpg'
         },
-        id_usuario: {
+        UsuarioId: {
             type: DataType.INTEGER.UNSIGNED,
-            allowNull: false
+            allowNull: false,
+            field: "id_usuario"
         },
         id_categoria: {
             type: DataType.INTEGER.UNSIGNED,
@@ -57,8 +59,16 @@ module.exports = (sequelize, DataType) => {
     },
         {
             tableName: "receita",
+            sequelize,
             timestamps: false
         }
     )
+    Receita.associate = (models) => {
+        Receita.belongsTo(models.Usuario, {
+            foreignKey: "id_usuario",
+            as: "usuarios"
+        })
+    }
+
     return Receita;
 }

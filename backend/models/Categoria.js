@@ -23,5 +23,12 @@ module.exports = (sequelize, DataType) => {
             timestamps: false
         }
     );
+
+    // Categoria.associate = (models) => {
+    //     Categoria.hasMany(models.Receita, {
+    //         foreignkey: "id_categoria",
+    //         as: "receitas"
+    //     })
+    // }
     return Categoria;
 }

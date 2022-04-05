@@ -6,10 +6,11 @@ const controller = {
     //LISTAR TODAS RECEITAS
     index: async (req, res, next) => {
         const receitas = await Receita.findAll({
+            attributes: { exclude: ["id_usuario"] },
             include: {
                 model: Usuario,
                 as: "usuarios",
-                attributes: ["id", "nome", "email"]
+                attributes: { exclude: ["senha"] }
             }
 
         })

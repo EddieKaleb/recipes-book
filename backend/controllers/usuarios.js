@@ -17,7 +17,7 @@ const controller = {
     if (usuarioId) {
       res.send(usuarioId)
     } else {
-      res.status(500).send('Usuário não encontrado!')
+      res.status(404).send('Usuário não encontrado!')
     }
   },
   //CADASTRAR USUÁRIOS

@@ -24,11 +24,11 @@ module.exports = (sequelize, DataType) => {
         }
     );
 
-    // Categoria.associate = (models) => {
-    //     Categoria.hasMany(models.Receita, {
-    //         foreignkey: "id_categoria",
-    //         as: "receitas"
-    //     })
-    // }
+    Categoria.associate = (models) => {
+        Categoria.hasMany(models.Receita, {
+            foreignkey: "id_categoria",
+            as: "receitas"
+        })
+    }
     return Categoria;
 }

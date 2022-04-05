@@ -43,7 +43,7 @@ module.exports = (sequelize, DataType) => {
             allowNull: false,
             field: "id_usuario"
         },
-        CategoriaId: {
+        CategoriumId: {
             type: DataType.INTEGER.UNSIGNED,
             allowNull: false,
             field: "id_categoria"
@@ -63,15 +63,16 @@ module.exports = (sequelize, DataType) => {
             sequelize,
             timestamps: false
         }
-    )
+    );
+
     Receita.associate = (models) => {
         Receita.belongsTo(models.Usuario, {
             foreignKey: "id_usuario",
-            as: "usuarios"
+            as: "usuario"
         }),
             Receita.belongsTo(models.Categoria, {
                 foreignKey: "id_categoria",
-                as: "categorias"
+                as: "categoria"
             })
     }
 

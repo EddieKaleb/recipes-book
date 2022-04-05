@@ -1,4 +1,4 @@
-const { Receita, Sequelize, Usuario } = require('../models');
+const { Receita, Sequelize, Usuario, Categoria } = require('../models');
 const op = Sequelize.Op;
 
 const controller = {
@@ -6,15 +6,17 @@ const controller = {
     //LISTAR TODAS RECEITAS
     index: async (req, res, next) => {
         const receitas = await Receita.findAll({
-            attributes: { exclude: ["id_usuario"] },
-            include: {
+            include: [{
                 model: Usuario,
-                as: "usuarios",
+                as: "usuario",
                 attributes: { exclude: ["senha"] }
-            }
-
+            }, {
+                model: Categoria,
+                as: "categoria"
+            }],
+            attributes: { exclude: ["id_usuario", "UsuarioId", "id_categoria", "CategoriumId"] },
         })
-        res.json(receitas)
+        res.status(200).json(receitas)
 
     },
     //LISTAR RECEITAS POR ID
@@ -23,9 +25,20 @@ const controller = {
         if (!id) {
             res.status(400).send("Receita não informada!")//VERIFICAR NECESSIDADE
         }
-        const receitaId = await Receita.findByPk(id)
+        const receitaId = await Receita.findAll({
+            where: { id },
+            include: [{
+                model: Usuario,
+                as: "usuario",
+                attributes: { exclude: ["senha"] }
+            }, {
+                model: Categoria,
+                as: "categoria"
+            }],
+            attributes: { exclude: ["id_usuario", "UsuarioId", "id_categoria", "CategoriumId"] }
+        })
         if (receitaId) {
-            res.json(receitaId)
+            res.status(200).json(receitaId)
         } else {
             res.status(404).send("Receita não encontrada!")
         }
@@ -34,12 +47,19 @@ const controller = {
     categorias: async (req, res, next) => {
         const { id } = req.params;
         const receitasPorCategoria = await Receita.findAll({
-            where: {
-                id_categoria: id
-            }
+            where: { id_categoria: id },
+            include: [{
+                model: Usuario,
+                as: "usuario",
+                attributes: { exclude: ["senha"] }
+            }, {
+                model: Categoria,
+                as: "categoria"
+            }],
+            attributes: { exclude: ["id_usuario", "UsuarioId", "id_categoria", "CategoriumId"] }
         })
         if (receitasPorCategoria) {
-            res.json(receitasPorCategoria)
+            res.status(200).json(receitasPorCategoria)
         } else {
             res.status(404).send("Categoria de receita não encontrada!") //ESTÁ TRAZENDO UM ARRAY VAZIO AO INVÉS DA MENSAGEM
         }
@@ -49,19 +69,38 @@ const controller = {
         const usuarioLogado = req.cookies.usuario.id;
         console.log(usuarioLogado)
         const receitas = await Receita.findAll(
-            { where: { id_usuario: usuarioLogado } }
-        );
-        res.json(receitas)
+            {
+                where: { id_usuario: usuarioLogado },
+                include: [{
+                    model: Usuario,
+                    as: "usuario",
+                    attributes: { exclude: ["senha"] }
+                }, {
+                    model: Categoria,
+                    as: "categoria"
+                }],
+                attributes: { exclude: ["id_usuario", "UsuarioId", "id_categoria", "CategoriumId"] }
+            });
+        res.status(200).json(receitas)
     },
     //LISTAR RECEITAS POR TÍTULO (VERIFICAR IMPLEMENTAÇÃO)
     titulo: async (req, res, next) => {
         const { titulo } = req.query;
         const receitasPorTitulo = await Receita.findAll({
-            where: { titulo: { [op.like]: `%${titulo}%` } }
+            where: { titulo: { [op.like]: `%${titulo}%` } },
+            include: [{
+                model: Usuario,
+                as: "usuario",
+                attributes: { exclude: ["senha"] }
+            }, {
+                model: Categoria,
+                as: "categoria"
+            }],
+            attributes: { exclude: ["id_usuario", "UsuarioId", "id_categoria", "CategoriumId"] }
         })
 
         if (receitasPorTitulo) {
-            res.json(receitasPorTitulo)
+            res.status(200).json(receitasPorTitulo)
         }
     },
     //CADASTRAR RECEITAS
@@ -81,11 +120,12 @@ const controller = {
             url_video
         })
         if (novaReceita) {
-            res.json(novaReceita)
+            res.status(200).json(novaReceita)
         } else {
             res.status(404).send("Receita não cadastrada!")
         }
     },
+    //EDITAR RECEITAS
     edit: async (req, res, next) => {
         const { id } = req.params;
         const { titulo, tempo_preparo, rendimento, ingredientes, modo_preparo, observacoes, url_imagem, id_categoria, data, url_video } = req.body;
@@ -106,7 +146,7 @@ const controller = {
                     url_video
                 }, { where: { id } })
                 if (receitaEditada) {
-                    res.json(await Receita.findByPk(id))
+                    res.status(204)(await Receita.findByPk(id))
                 } else {
                     res.status(404).send("Receita não atualizada!")
                 }

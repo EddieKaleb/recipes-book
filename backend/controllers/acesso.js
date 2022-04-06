@@ -11,10 +11,10 @@ const controller = {
         //SALVANDO USUARIO NA SESSION
         req.session.usuario = usuarioSalvo;
         res.cookie("usuario", usuarioSalvo)
-        res.json(usuarioSalvo)
+        res.status(200).json(usuarioSalvo)
         //MANTER USUARIO LOGADO
         if (manterLogado != undefined) {
-          res.cookie("manterLogado", usuarioSalvo.email, { maxAge: 3600000 })
+          res.cookie("manterUsuarioLogado", usuarioSalvo.email, { maxAge: 3600000 })
         }
       } else {
         res.status(400).json({ message: 'Dados de login inválidos!' })
@@ -23,6 +23,10 @@ const controller = {
       res.status(400).json({ message: 'E-mail não cadastrado!' })
     }
   },
+  logout: (req, res) => {
+    req.session.usuario = null
+    res.status(200).redirect("/acesso/login")
+  }
 }
 
 module.exports = controller

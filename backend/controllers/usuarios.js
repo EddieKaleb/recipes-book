@@ -3,25 +3,22 @@ const bcrypt = require('bcrypt')
 
 const controller = {
   //LISTAR TODOS OS USUÁRIOS
-  index: async (req, res, next) => {
+  index: async (res) => {
     const usuarios = await Usuario.findAll()
-    res.json(usuarios)
+    res.status(200).json(usuarios)
   },
   //LISTAR USUÁRIOS POR ID
-  show: async (req, res, next) => {
+  show: async (req, res) => {
     const { id } = req.params
-    if (!id) {
-      res.status(400).send('Usuário não informado!') //VERIFICAR NECESSIDADE
-    }
     const usuarioId = await Usuario.findByPk(id)
     if (usuarioId) {
-      res.send(usuarioId)
+      res.status(200).json(usuarioId)
     } else {
-      res.status(404).send('Usuário não encontrado!')
+      res.status(404).send({ message: 'Usuário não encontrado!' })
     }
   },
   //CADASTRAR USUÁRIOS
-  add: async (req, res, next) => {
+  add: async (req, res) => {
     const { nome, email, senha } = req.body
     const senhaCrypto = await bcrypt.hash(senha, 12)
     const validarEmail = await Usuario.findOne({ where: { email } })
@@ -35,7 +32,7 @@ const controller = {
         senha: senhaCrypto,
       })
       if (novoUsuario) {
-        res.json(novoUsuario)
+        res.status(200).json(novoUsuario)
       } else {
         res.status(400).json({ message: 'Usuário não cadastrado!' })
       }

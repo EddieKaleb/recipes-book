@@ -3,12 +3,12 @@ const { Categoria } = require('../models');
 
 const controller = {
     //LISTAR TODAS AS CATEGORIAS
-    index: async (req, res, next) => {
+    index: async (req, res) => {
         const categorias = await Categoria.findAll();
         res.status(200).json(categorias)
     },
     //LISTAR CATEGORIAS POR ID
-    show: async (req, res, next) => {
+    show: async (req, res) => {
         const { id } = req.params;
         const categoriaId = await Categoria.findByPk(id)
         if (categoriaId) {

@@ -10,7 +10,7 @@ const usersRouter = require("./routes/usuarios");
 const categoryRouter = require("./routes/categorias");
 const recipesRouter = require("./routes/receitas");
 const accessRouter = require("./routes/acesso");
-const cookieMiddleware = require("./middlewares/cokkieLogin");
+// const cookieMiddleware = require("./middlewares/cokkieLogin");
 
 const app = express();
 
@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(cookieMiddleware)
+// app.use(cookieMiddleware)
 
 app.use("/usuarios", usersRouter);
 app.use("/categorias", categoryRouter);

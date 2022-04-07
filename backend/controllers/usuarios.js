@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 
 const controller = {
   //LISTAR TODOS OS USUÁRIOS
-  index: async (res) => {
+  index: async (req, res) => {
     const usuarios = await Usuario.findAll()
     res.status(200).json(usuarios)
   },

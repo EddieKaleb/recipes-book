@@ -158,7 +158,6 @@ const controller = {
     },
     //EXCLUIR RECEITAS
     delete: async (req, res) => {
-        console.log('excluir')
         const { id } = req.params;
         const receitaExcluida = await Receita.findByPk(id);
         if (receitaExcluida) {

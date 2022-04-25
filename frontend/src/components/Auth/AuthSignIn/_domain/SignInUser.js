@@ -16,6 +16,7 @@ export const SignInUser = () => {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
+        credentials: 'same-origin',
         body: JSON.stringify(data),
       })
       const payload = await response.json()
@@ -24,6 +25,10 @@ export const SignInUser = () => {
         const { message } = payload
         throw Error(message)
       } else {
+        localStorage.setItem(
+          'user',
+          JSON.stringify({ id: payload.id, nome: payload.nome }),
+        )
         navigate('/')
         toast.success('Bem-vindo(a)!')
       }

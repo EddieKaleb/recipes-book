@@ -100,11 +100,23 @@
 .popular-menu h3 {
   font-size: 15px;
   font-family: 'Prompt', sans-serif;
+  display: inline !important;
+}
+
+.popular-menu .see-all-link-selected {
+  color: #d00807;
+  text-decoration: underline;
+}
+
+.popular-menu .see-all-link:not(.see-all-link-selected):hover {
+  color: #d00807;
 }
 
 .popular-menu .see-all-link {
-  text-decoration: underline;
-  cursor: pointer;
+  font-size: 14;
+  font-weight: 500;
+  font-family: 'Prompt', sans-serif;
+  cursor: pointer !important;
 }
 
 .popular-menu .content .text span {
@@ -114,6 +126,6 @@
 }
 
 .popular-menu .content .text .price {
-  color: #d00807;
   font-size: 12px;
+  color: #d00807;
 }

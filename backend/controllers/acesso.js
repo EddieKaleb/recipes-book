@@ -9,8 +9,8 @@ const controller = {
     if (usuarioSalvo) {
       if (await bcrypt.compare(senha, usuarioSalvo.senha)) {
         //SALVANDO USUARIO NA SESSION
-        req.session.usuario = usuarioSalvo;
-        res.cookie("usuario", usuarioSalvo)
+        req.session.usuario = usuarioSalvo
+        res.cookie('usuario', usuarioSalvo, { httpOnly: false })
         res.json(usuarioSalvo)
       } else {
         res.status(400).json({ message: 'Dados de login inválidos!' })

@@ -13,6 +13,7 @@ export const RecipeList = ({ search }) => {
   const params = useParams()
   const SKELETON_SIZE = 12
   const [isLoading, setLoading] = useState(true)
+  const [isMyRecipes, setMyRecipes] = useState(false)
 
   const [recipes, setRecipes] = useState([])
   const [category, setCategory] = useState([])
@@ -20,16 +21,6 @@ export const RecipeList = ({ search }) => {
   const [searchedRecipes, setSearchedRecipes] = useState([])
 
   useEffect(() => {
-    const getRecipes = async () => {
-      setLoading(true)
-      const recipesFromServer = await fetchRecipes()
-      setRecipes(recipesFromServer)
-
-      setTimeout(() => {
-        setLoading(false)
-      }, 2000)
-    }
-
     const getSearchRecipes = async () => {
       const recipesFromServer = await fetchSearchedRecipes()
       setSearchedRecipes(recipesFromServer)
@@ -63,6 +54,28 @@ export const RecipeList = ({ search }) => {
     }
   }, [search])
 
+  const getRecipes = async () => {
+    setLoading(true)
+    setMyRecipes(false)
+    const recipesFromServer = await fetchRecipes()
+    setRecipes(recipesFromServer)
+
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  }
+
+  const getMyRecipes = async () => {
+    setLoading(true)
+    setMyRecipes(true)
+    const recipesFromServer = await fetchMyRecipes()
+    setRecipes(recipesFromServer)
+
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  }
+
   const fetchSearchedRecipes = async () => {
     if (search === undefined) return
 
@@ -74,9 +87,26 @@ export const RecipeList = ({ search }) => {
   }
 
   const fetchRecipes = async () => {
-    const res = await fetch('http://localhost:3000/receitas')
+    const res = await fetch('http://localhost:3000/receitas', {
+      credentials: 'same-origin',
+    })
 
+    console.log(document.cookie)
     return await res.json()
+  }
+
+  const fetchMyRecipes = async () => {
+    const user_id = JSON.parse(localStorage.getItem('user')).id
+
+    const res = await fetch(
+      `http://localhost:3000/receitas/filtrar/usuario/${user_id}`,
+    )
+
+    const data = await res.json()
+
+    setRecipes(data)
+
+    return data
   }
 
   const fetchRecipesByCategory = async () => {
@@ -112,8 +142,24 @@ export const RecipeList = ({ search }) => {
         {location.pathname === '/' ? (
           <div className="container">
             <div className="section-title">
-              <h3>
+              <span
+                onClick={getRecipes}
+                className={
+                  'see-all-link ' + (isMyRecipes ? '' : 'see-all-link-selected')
+                }
+              >
                 All Recipes
+              </span>
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <span
+                onClick={getMyRecipes}
+                className={
+                  'see-all-link ' + (isMyRecipes ? 'see-all-link-selected' : '')
+                }
+              >
+                My Recipes
+              </span>
+              <h3>
                 <Link to="/categories" className="see-all-link">
                   See Categories
                 </Link>

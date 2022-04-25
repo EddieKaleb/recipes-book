@@ -72,6 +72,7 @@ export const CreateRecipe = () => {
       }`,
       {
         method: editMode ? 'PUT' : 'POST',
+        credentials: 'include',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',

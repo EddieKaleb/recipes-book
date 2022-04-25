@@ -11,13 +11,13 @@ const controller = {
   show: async (req, res, next) => {
     const { id } = req.params
     if (!id) {
-      res.status(400).send('Usuário não informado!') //VERIFICAR NECESSIDADE
+      res.status(400).json({ message: 'Usuário não informado!' }) //VERIFICAR NECESSIDADE
     }
     const usuarioId = await Usuario.findByPk(id)
     if (usuarioId) {
       res.send(usuarioId)
     } else {
-      res.status(500).send('Usuário não encontrado!')
+      res.status(400).json({ message: 'Usuário não encontrado!' })
     }
   },
   //CADASTRAR USUÁRIOS

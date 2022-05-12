@@ -14,14 +14,14 @@ INSERT INTO receitas.categoria VALUES
 (11,'Healthy','https://thumbs.dreamstime.com/b/healthy-food-selection-healthy-food-selection-fruits-vegetables-seeds-superfood-cereals-gray-background-121936825.jpg');
 
 INSERT INTO receitas.usuario VALUES 
-(1,'glenioanderson@gmail.com','123456','glenio'),
-(2,'maria@gmail.com','1245','maria'),
-(3,'eddie@gmail.com','789','eddie'),
-(4,'lilian@gmail.com','34232','lilian'),
-(5,'hector@hotmail.com','4444','hector'),
-(6,'joselio@gmail.com','234','joselio'),
-(7,'patrick@gmail.com','234','patrick'),
-(8,'tarsila@gmail.com','234','tarsila');
+(1,'glenioanderson@gmail.com','$2b$12$lvNtgKMK6t8Z46J5hVRyhuleWeh5KaWXXqAw18u/ns2DIyO/UeOeO','glenio'),
+(2,'maria@gmail.com','$2b$12$lvNtgKMK6t8Z46J5hVRyhuleWeh5KaWXXqAw18u/ns2DIyO/UeOeO','maria'),
+(3,'eddie@gmail.com','$2b$12$lvNtgKMK6t8Z46J5hVRyhuleWeh5KaWXXqAw18u/ns2DIyO/UeOeO','eddie'),
+(4,'lilian@gmail.com','$2b$12$lvNtgKMK6t8Z46J5hVRyhuleWeh5KaWXXqAw18u/ns2DIyO/UeOeO','lilian'),
+(5,'hector@hotmail.com','$2b$12$lvNtgKMK6t8Z46J5hVRyhuleWeh5KaWXXqAw18u/ns2DIyO/UeOeO','hector'),
+(6,'joselio@gmail.com','$2b$12$lvNtgKMK6t8Z46J5hVRyhuleWeh5KaWXXqAw18u/ns2DIyO/UeOeO','joselio'),
+(7,'patrick@gmail.com','$2b$12$lvNtgKMK6t8Z46J5hVRyhuleWeh5KaWXXqAw18u/ns2DIyO/UeOeO','patrick'),
+(8,'tarsila@gmail.com','$2b$12$lvNtgKMK6t8Z46J5hVRyhuleWeh5KaWXXqAw18u/ns2DIyO/UeOeO','tarsila');
 
 INSERT INTO receitas.receita VALUES 
 (1,'Bolinho de mandioca recheado',90,15,'1 quilo de mandioca; 2 gemas; 1 colher (sopa) de margarina; cheiro-verde a gosto picadinho bem pequeno; sal e pimenta-do-reino; Recheio: 200 g de carne moída; ','1- Cozinhe a mandioca até quase desmanchar, escorra e retire aquelas fibras grossas e amasse com a ajuda de um garfo (não use o processador, pois essa massa é bastante pesada); 2-Coloque a massa em uma tigela grande e espere esfriar um pouco. 3- Acrescente as 2 gemas, a margarina, cheiro verde e temperos, amasse bem e reserve. Para o recheio faça um refogado com a carne moída e deixe que fique bem sequinho, depois de frio acrescente a mussarela ralada. 4- Montagem: 5- Molhe as mãos na água e forme os bolinhos, coloque o recheio, feche e empane. 6- Frite em óleo quente. Pode ser congelado, antes de fritar.','Quer dar uma olhada em outra típica receita de bolinho brasileira? Confira a nossa receita de bolinho de chuva e aproveite essa delícia mais tarde!','https://i.ytimg.com/vi/8Q275rlYuGI/maxresdefault.jpg',3,10,'2022-03-27','https://www.youtube.com/embed/8Q275rlYuGI'),

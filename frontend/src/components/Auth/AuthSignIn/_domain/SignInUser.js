@@ -16,7 +16,6 @@ export const SignInUser = () => {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        credentials: 'same-origin',
         body: JSON.stringify(data),
       })
       const payload = await response.json()

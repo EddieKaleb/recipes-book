@@ -87,9 +87,7 @@ export const RecipeList = ({ search }) => {
   }
 
   const fetchRecipes = async () => {
-    const res = await fetch('http://localhost:3000/receitas', {
-      credentials: 'same-origin',
-    })
+    const res = await fetch('http://localhost:3000/receitas')
 
     console.log(document.cookie)
     return await res.json()
@@ -98,9 +96,7 @@ export const RecipeList = ({ search }) => {
   const fetchMyRecipes = async () => {
     const user_id = JSON.parse(localStorage.getItem('user')).id
 
-    const res = await fetch(
-      `http://localhost:3000/receitas/filtrar/usuario/${user_id}`,
-    )
+    const res = await fetch(`http://localhost:3000/receitas/filtrar/usuario`)
 
     const data = await res.json()
 
